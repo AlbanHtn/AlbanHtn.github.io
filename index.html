@@ -116,9 +116,35 @@
   footer { padding: 40px 0 60px; text-align: center; color: var(--text-dim); font-size: 0.86rem; }
   footer a { color: var(--text-dim); }
 
+  /* Technical case-study components */
+  .subhead { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin: 26px 0 10px; }
+  .card p { margin: 0 0 12px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul { margin: 8px 0 14px; padding-left: 20px; }
+  .card li { margin-bottom: 7px; }
+  .card li strong, .card p strong { color: var(--text); }
+  .lede { font-size: 1.02rem; color: var(--text-dim); }
+
+  .fig-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 18px 0 6px; }
+  figure { margin: 0; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+  figure img { width: 100%; height: auto; border-radius: 6px; display: block; background: #fff; }
+  figcaption { font-size: 0.78rem; color: var(--text-dim); margin-top: 8px; line-height: 1.45; }
+
+  details { border: 1px solid var(--border); border-radius: 10px; padding: 0 18px; margin: 14px 0 4px; background: var(--bg-alt); }
+  details[open] { padding-bottom: 14px; }
+  summary { cursor: pointer; padding: 13px 0; font-size: 0.9rem; font-weight: 600; list-style: none; display: flex; align-items: center; gap: 8px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "＋"; color: var(--accent); font-weight: 700; }
+  details[open] summary::before { content: "－"; }
+  details .inner { font-size: 0.9rem; color: var(--text-dim); }
+  details .inner strong { color: var(--text); }
+
+  .flag-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
+
   @media (max-width: 600px) {
     .hero h1 { font-size: 2rem; }
     header.site nav { gap: 14px; font-size: 0.85rem; }
+    .card { padding: 22px; }
   }
 </style>
 </head>
@@ -128,8 +154,8 @@
   <div class="wrap">
     <span class="brand">Alban Haton</span>
     <nav>
-      <a href="#flagship">Projet phare</a>
-      <a href="#experience">Expériences</a>
+      <a href="#projects">Projets</a>
+      <a href="#experience">Expérience</a>
       <a href="#skills">Compétences</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -142,10 +168,11 @@
     <span class="kicker">Data Science · Sports Analytics</span>
     <h1>Ingénieur Data spécialisé en Sports Analytics.</h1>
     <p class="lead">
-      Je conçois des pipelines de données et des modèles prédictifs avec une exigence de rigueur méthodologique —
-      protocoles anti-fuite de données, validation temporelle stricte, résultats honnêtes plutôt qu'optimisés pour impressionner.
-      Double expérience en environnement de production (LFP Media) et en recherche appliquée (Université de Malmö,
-      publication acceptée dans <em>Frontiers in Digital Health</em>).
+      Élève-ingénieur en fin de cursus (Polytech Clermont, spécialité IA &amp; Big Data). Je construis des
+      pipelines de données et des modèles prédictifs avec une exigence de rigueur méthodologique —
+      protocoles anti-fuite stricts, validation adaptée à la structure des données, résultats honnêtes
+      plutôt qu'optimisés pour impressionner. Expérience en production (LFP Media) et en recherche appliquée
+      (Université de Malmö, publication dans <em>Frontiers in Digital Health</em>).
     </p>
     <div class="links">
       <a class="btn primary" href="https://github.com/AlbanHtn" target="_blank" rel="noopener">GitHub</a>
@@ -154,66 +181,260 @@
     </div>
   </section>
 
-  <section id="flagship">
-    <h2>Projet phare</h2>
-    <p class="section-sub">Un pipeline complet, de la donnée brute à un résultat scientifiquement honnête.</p>
+  <section id="projects">
+    <h2>Projets techniques</h2>
+    <p class="section-sub">Trois études de cas complètes — de la donnée brute au résultat, avec le raisonnement méthodologique à chaque étape.</p>
 
+    <!-- ============ PROJET 1 : FOOTBALL ============ -->
     <div class="card">
       <div class="project-header">
-        <h3>⚽ Football Match Prediction — Market Efficiency Study</h3>
+        <h3>⚽ Prédiction de résultats & efficience du marché des paris</h3>
         <div class="tags">
           <span class="tag">ML</span>
           <span class="tag">Quant / Betting</span>
           <span class="tag">MLOps</span>
         </div>
       </div>
-      <p>
-        Pipeline end-to-end sur <strong>52 580 matchs</strong> (Big 5 européens, 2006–2025) : réconciliation par
-        fuzzy matching (complétude des indicateurs Elo portée de 60% à 91%), feature engineering temporel
-        (rolling windows k=5, classement Elo, dynamiques de forme), et évaluation sous protocole
-        <strong>Time Series Split</strong> strict (5 folds) — zéro fuite de données temporelle.
+      <p class="flag-tag">Projet phare · Projet 5A · binôme (Polytech Clermont) · repo public</p>
+      <p class="lede">
+        <strong>Les données sportives publiques (Elo, forme, statistiques) suffisent-elles à prédire un match
+        aussi bien que les cotes des bookmakers — sans utiliser ces cotes ?</strong> Une chaîne de modélisation
+        complète sur <strong>52 580 matchs</strong> des 5 grands championnats européens (2006–2025) pour répondre
+        à cette question sous l'angle de l'efficience de marché.
       </p>
 
       <div class="metrics">
-        <div class="metric"><div class="val">51.9%</div><div class="lbl">Accuracy XGBoost (aveugle)</div></div>
-        <div class="metric"><div class="val">96.7%</div><div class="lbl">Signal du marché capté</div></div>
+        <div class="metric"><div class="val">51.9%</div><div class="lbl">Accuracy XGBoost aveugle</div></div>
+        <div class="metric"><div class="val">96.7%</div><div class="lbl">du signal du marché capté</div></div>
         <div class="metric"><div class="val">1.7%</div><div class="lbl">ECE (calibration)</div></div>
-        <div class="metric"><div class="val">−5.8%</div><div class="lbl">ROI (aligné marge bookmaker)</div></div>
+        <div class="metric"><div class="val">−5.8%</div><div class="lbl">ROI ≈ marge bookmaker</div></div>
+      </div>
+
+      <div class="subhead">Ingénierie des données — le vrai défi</div>
+      <p>
+        Deux sources hétérogènes sans identifiant commun : les résultats et cotes de Football-Data.co.uk
+        (<strong>228 377 matchs</strong>) et les classements Elo de ClubElo.com (<strong>242 591 snapshots</strong>).
+        Les noms de clubs divergent (« Man Utd » vs « Manchester United ») : une jointure stricte aurait rejeté
+        plus de 40 % des lignes, en excluant surtout les outsiders — un biais de sélection majeur. J'ai mis en place
+        un pipeline de <strong>fuzzy matching</strong> (distance de Levenshtein, seuil de similarité à 85 %, complété
+        par un dictionnaire de correspondances corrigé à la main), portant la complétude des indicateurs Elo de
+        <strong>&lt; 60 % à 90,6 %</strong>, et à 100 % sur le périmètre final.
+      </p>
+      <p>
+        Un audit de complétude (data profiling) a ensuite guidé un <strong>entonnoir de sélection</strong> : plutôt
+        que de garder le volume maximal (165 619 matchs, 82 % de complétude, trop bruités), j'ai retenu le sous-ensemble
+        Big 5 / 2006–2025 (<strong>52 580 matchs, 97,3 % de complétude</strong>) — un choix assumé de la qualité du
+        signal sur la quantité, la coupure 2006 étant justifiée par un point d'inflexion dans la disponibilité des
+        statistiques de jeu.
+      </p>
+
+      <div class="subhead">Feature engineering & protocole anti-fuite</div>
+      <ul>
+        <li>Une trentaine de variables organisées en trois axes : <strong>force intrinsèque</strong> (EloDiff — la
+          variable maîtresse, corrélée à <strong>0,889</strong> à la probabilité implicite du marché), <strong>forme
+          récente</strong> et <strong>qualité de jeu</strong> (tirs, corners, différentiel de cartons).</li>
+        <li>Fenêtres glissantes de profondeur <strong>k = 5</strong>, décalées d'un match (<code>shift(1)</code>) pour
+          garantir la causalité, et indicateurs domicile / extérieur <strong>disjoints</strong> pour capter les profils
+          asymétriques.</li>
+        <li>Trois garde-fous anti-fuite indépendants : jointure Elo par <code>merge_asof(direction=&#39;backward&#39;)</code>
+          (aucun snapshot postérieur au match), lag-1 sur toutes les fenêtres, et <strong>validation croisée temporelle</strong>
+          (<code>TimeSeriesSplit</code>, 5 folds expansifs) — jamais de <em>shuffle</em> aléatoire.</li>
+      </ul>
+
+      <div class="subhead">Modélisation & évaluation triangulaire</div>
+      <p>
+        Trois familles comparées : Régression Logistique (baseline linéaire), Random Forest et XGBoost, chacune
+        déclinée en version « avec cotes » (test de contrôle) et « aveugle » (sans cotes). Chaque modèle est jugé
+        sur trois dimensions : <strong>discrimination</strong> (accuracy), <strong>calibration probabiliste</strong>
+        (Log Loss, Brier, ECE) et <strong>rentabilité économique</strong> (ROI d'une stratégie de value-betting).
+      </p>
+
+      <div class="fig-grid">
+        <figure>
+          <img src="assets/football/calibration_curve.png" alt="Courbe de calibration du modèle XGBoost, ECE = 1,7%">
+          <figcaption><strong>Calibration (ECE 1,7 %).</strong> Quand le modèle annonce 60 % de victoire, l'événement
+            se produit ≈ 60 % du temps — condition nécessaire à un calcul d'espérance de gain fiable.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/football/shap_summary.png" alt="Graphique SHAP des variables du XGBoost">
+          <figcaption><strong>Explicabilité SHAP.</strong> Le modèle suit une logique pseudo-bayésienne : l'écart Elo
+            fixe la tendance lourde, les statistiques récentes ajustent à la marge.</figcaption>
+        </figure>
       </div>
 
       <div class="callout">
-        <strong>Validation financière (EMH) :</strong> un modèle qui "bat" durablement des cotes de bookmaker
-        professionnel sur un jeu de données public serait suspect. Ici, le modèle capture 96,7% du signal prédictif
-        du marché à partir de données purement sportives (sans les cotes), avec une calibration fine (ECE 1,7%) —
-        et le ROI simulé (−5,8%) s'aligne précisément sur la marge du bookmaker. C'est une validation empirique
-        rigoureuse de l'hypothèse d'efficience de marché, pas un échec : le résultat honnête plutôt que le résultat qui impressionne.
+        <strong>Le résultat honnête (validation de l'EMH).</strong> Le XGBoost aveugle atteint 51,9 % d'accuracy, soit
+        <strong>96,7 %</strong> de la performance du marché (53,63 %), avec une excellente calibration (ECE 1,7 %). La
+        simulation de paris donne un <strong>ROI de −5,79 %</strong>, statistiquement indiscernable de la marge du
+        bookmaker (~5,5 %). Les courbes d'apprentissage plafonnent : on atteint l'erreur de Bayes accessible avec ces
+        variables. Conclusion : les données endogènes permettent d'<em>égaler</em> le marché mais pas de le battre —
+        l'alpha réside dans l'information exogène (compositions, blessures, xG) absente de l'historique. Un ROI négatif
+        aligné sur la marge n'est pas un échec : c'est la preuve empirique attendue d'un marché efficient.
       </div>
+
+      <details>
+        <summary>Détails d'implémentation & MLOps</summary>
+        <div class="inner">
+          <p><strong>Hyperparamètres XGBoost</strong> (approche conservatrice, anti-surapprentissage sur données bruitées) :
+            <code>max_depth = 4</code>, <code>subsample = 0.8</code>, <code>learning_rate = 0.05</code>, 300 arbres.</p>
+          <p><strong>Classe minoritaire « match nul »</strong> (≈ 26 %, faible ratio signal/bruit) : après échec du
+            rééquilibrage <em>balanced</em> (chute de l'accuracy sous 49 %), choix d'une pénalisation asymétrique douce
+            (<code>w<sub>D</sub> = 1,1</code>). Le XGBoost capte un rappel de 6 % sur les nuls, contre ≈ 1 % pour la RF.</p>
+          <p><strong>Refonte MLOps du dépôt</strong> (menée par mes soins après le projet académique) : package Python
+            installable (src layout, PEP 517), pipeline CLI end-to-end, 49 tests unitaires, CI GitHub Actions
+            (pytest sur Python 3.11 &amp; 3.12, ruff, mypy).</p>
+        </div>
+      </details>
 
       <div class="tech-pills">
         <span class="pill">Python</span>
         <span class="pill">pandas</span>
         <span class="pill">scikit-learn</span>
         <span class="pill">XGBoost</span>
+        <span class="pill">rapidfuzz</span>
         <span class="pill">SHAP</span>
         <span class="pill">pytest</span>
         <span class="pill">GitHub Actions</span>
       </div>
 
       <div class="links" style="margin-top:22px;">
-        <a class="btn" href="https://github.com/AlbanHtn/football-match-prediction" target="_blank" rel="noopener">Code source →</a>
+        <a class="btn primary" href="https://github.com/AlbanHtn/football-match-prediction" target="_blank" rel="noopener">Code source & README détaillé →</a>
       </div>
+    </div>
+
+    <!-- ============ PROJET 2 : CLERMONT FOOT ============ -->
+    <div class="card">
+      <div class="project-header">
+        <h3>🎯 Profilage de joueurs par style de jeu — Clermont Foot 63</h3>
+        <div class="tags">
+          <span class="tag">Clustering</span>
+          <span class="tag">Data App</span>
+          <span class="tag">Recrutement</span>
+        </div>
+      </div>
+      <p class="flag-tag">Projet 4A · binôme · partenariat Clermont Foot 63 · données StatsBomb</p>
+      <p class="lede">
+        Construire un outil d'aide au recrutement capable de traduire des statistiques brutes en
+        <strong>styles de jeu interprétables</strong>. Cas d'étude appliqué aux attaquants de Ligue 1 (saison
+        2023-24), à partir des données événementielles <strong>StatsBomb</strong> (fichier JSON, actions, métriques
+        avancées de type Expected Goals).
+      </p>
+
+      <div class="subhead">Pipeline de données</div>
+      <p>
+        Ingestion du JSON, nettoyage (suppression des colonnes administratives et des variables constantes ou
+        redondantes), calcul de l'âge, puis <strong>catégorisation des postes</strong> en 5 familles (attaquants,
+        excentrés, milieux, latéraux, centraux) et centralisation dans une base <strong>SQLite</strong> pour des
+        requêtes ciblées par poste.
+      </p>
+
+      <div class="subhead">Une classification en deux temps</div>
+      <ul>
+        <li><strong>Filtrage par temps de jeu (K-Means).</strong> Segmentation des joueurs sur leurs minutes / apparitions
+          /titularisations (variables normalisées via <code>StandardScaler</code>, nombre de clusters choisi par la méthode
+          du coude). Élimination des joueurs à trop faible volume — statistiquement non représentatifs —, aboutissant à un
+          panel propre de <strong>50 attaquants</strong>.</li>
+        <li><strong>Regroupement par style (CHA).</strong> Classification Hiérarchique Ascendante avec la méthode de
+          <strong>Ward</strong> (minimisation de la variance intra-cluster) sur les métriques de performance ; le
+          dendrogramme fixe le nombre de profils sans le présupposer.</li>
+        <li><strong>Sélection des variables discriminantes (R²).</strong> Pour chaque variable, calcul de la proportion de
+          variance expliquée par l'appartenance au cluster, puis seuillage adapté à chaque groupe à partir du « gap »
+          observé sur l'histogramme (R² &gt; 0,3 / 0,14 / 0,35 selon le cluster). Les variables retenues sont des métriques
+          avancées : <em>xGChain</em>, <em>xGBuildup</em>, <em>npxG</em>, <em>PSxG</em>, touches dans la surface, duels
+          aériens gagnés…</li>
+      </ul>
+
+      <div class="subhead">Trois profils de jeu identifiés</div>
+      <ul>
+        <li><strong>Attaquant pivot</strong> — présence physique : dégagements, longs ballons sous pression et duels
+          aériens gagnés élevés, faible implication dans le dribble et le pressing.</li>
+        <li><strong>Attaquant de construction</strong> — impliqué dans le jeu combiné : fortes valeurs de <em>xGChain</em>
+          et <em>xGBuildup</em>, participation à la progression du ballon vers les zones dangereuses.</li>
+        <li><strong>Attaquant mauvais finisseur</strong> — efficacité offensive limitée : valeurs basses de xG, de
+          finition et de création malgré une présence dans le jeu.</li>
+      </ul>
+
+      <div class="subhead">Dashboard Streamlit</div>
+      <p>
+        Restitution dans une application <strong>Streamlit</strong> à destination des analystes / recruteurs : fiche
+        joueur détaillée avec son style de jeu, <strong>histogrammes de centiles</strong> par variable discriminante
+        (positionnement du joueur vs l'ensemble des attaquants), <strong>comparaison de deux joueurs</strong> par
+        diagramme radar, <strong>nuage de points</strong> à quadrants délimités par les médianes, et recherche filtrée
+        par club. Visualisations Plotly / Seaborn, normalisation <code>StandardScaler</code>.
+      </p>
+
+      <p class="note">Repo privé (données StatsBomb sous licence) — le code n'est pas publié, mais l'approche est détaillée ici.</p>
+    </div>
+
+    <!-- ============ PROJET 3 : MALMÖ ============ -->
+    <div class="card">
+      <div class="project-header">
+        <h3>🧠 Actimétrie & maladie de Parkinson — prédiction des scores MDS-UPDRS</h3>
+        <div class="tags">
+          <span class="tag">Recherche</span>
+          <span class="tag">Signal / Santé</span>
+          <span class="tag">Publication</span>
+        </div>
+      </div>
+      <p class="flag-tag">Stage de recherche · Université de Malmö (Suède) · mars – juil. 2025</p>
+      <p class="lede">
+        <strong>Peut-on estimer l'état clinique d'un patient parkinsonien à partir d'un simple capteur porté au
+        poignet ?</strong> L'échelle MDS-UPDRS est évaluée lors de courtes visites cliniques ; l'enjeu est de la
+        prédire à partir de l'activité mesurée en continu à domicile, pour un suivi personnalisé.
+      </p>
+
+      <div class="subhead">Données & extraction de variables</div>
+      <p>
+        Cohorte de <strong>30 patients équipés</strong> (27 dans la cohorte finale) d'un capteur Geneactiv enregistrant
+        en continu l'accélération tri-axiale, la température cutanée et la lumière ambiante à <strong>25 Hz</strong>
+        sur plusieurs semaines. À partir du signal brut, j'ai extrait plus de <strong>100 descripteurs</strong> :
+        indicateurs d'activité physique et de sommeil (package R <strong>GGIR</strong>), indicateurs de rythme circadien
+        — IS, IV, RA — (package <strong>nParACT</strong>).
+      </p>
+
+      <div class="subhead">Apprentissage auto-supervisé (embeddings)</div>
+      <p>
+        Au-delà des descripteurs classiques, application de la méthode contrastive <strong>SimCLR</strong> pour générer
+        des <strong>embeddings de dimension 64</strong> capturant des motifs temporels complexes invisibles aux variables
+        traditionnelles. La combinaison des deux niveaux de représentation (features interprétables + embeddings) a permis
+        de bénéficier à la fois de l'explicabilité et de la richesse du signal.
+      </p>
+
+      <div class="subhead">Modélisation & protocole anti-fuite</div>
+      <ul>
+        <li>Comparaison de plusieurs régressions (<strong>Ridge, Lasso, ElasticNet, BayesianRidge, DecisionTree, KNN</strong>)
+          pour prédire les sous-scores UPDRS 1, 2, 3 et leurs combinaisons.</li>
+        <li>Sélection de variables par <strong>SHAP</strong> et RRCT, avec courbes RMSE en fonction du nombre de variables
+          retenues.</li>
+        <li>Validation <strong>Leave-One-Patient-Out (LOPO)</strong> : le modèle est toujours testé sur un patient jamais vu
+          à l'entraînement — le seul protocole honnête pour évaluer la généralisation clinique.</li>
+      </ul>
+
+      <div class="subhead">Résultats & valorisation</div>
+      <p>
+        Corrélations prédiction / réalité encourageantes, notamment sur les symptômes non moteurs et l'autonomie :
+        <strong>r = 0,75</strong> (Tot1, symptômes non moteurs — RMSE 3,07) et jusqu'à <strong>r = 0,89</strong> sur les
+        scores composites (Tot2 + Tot3 — RMSE 6,61). Ces travaux ont donné lieu à une <strong>publication scientifique
+        évaluée par les pairs</strong>, dont je suis co-auteur.
+      </p>
+
+      <div class="links" style="margin-top:6px; margin-bottom:14px;">
+        <a class="btn" href="https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1876052/full" target="_blank" rel="noopener">Lire l'article (Frontiers in Digital Health, 2026) →</a>
+      </div>
+
+      <p class="note">Données patients protégées (santé) — non partageables ; la publication évaluée par les pairs est en accès libre.</p>
     </div>
   </section>
 
   <section id="experience">
-    <h2>Expériences & autres projets</h2>
-    <p class="section-sub">Code propriétaire ou données protégées — non publiables en repo, détaillés ici.</p>
+    <h2>Expérience professionnelle</h2>
+    <p class="section-sub">En environnement de production, sur des données propriétaires.</p>
 
     <div class="card">
       <div class="exp-item">
         <div class="exp-head">
           <h3>Assistant Chef de Projet Football Data</h3>
-          <span class="dates">fév. 2026 – présent</span>
+          <span class="dates">fév. – août 2026</span>
         </div>
         <div class="org">LFP Media (Ligue de Football Professionnel), Paris</div>
         <ul>
@@ -225,43 +446,7 @@
           <li>Production de dossiers statistiques tactiques pour Ligue 1+ et diffuseurs internationaux
             (5 à 10 livrables hebdomadaires).</li>
         </ul>
-        <p class="note">Code et données propriétés de la LFP — non partageables publiquement.</p>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-head">
-          <h3>Stagiaire de recherche en Data Science</h3>
-          <span class="dates">mars – juil. 2025</span>
-        </div>
-        <div class="org">Université de Malmö, Suède</div>
-        <ul>
-          <li>Feature engineering sur signaux d'accélérométrie bruts (25 Hz, capteurs Geneactiv) — cohorte
-            de 27 patients parkinsoniens, 100+ descripteurs.</li>
-          <li>Modélisation prédictive des scores MDS-UPDRS sous protocole <strong>Leave-One-Patient-Out</strong>
-            anti-leakage, sélection de variables par SHAP réintégrée à chaque fold.</li>
-          <li>Résultats : r = 0,75 (sous-scores), r = 0,89 (scores composites).</li>
-          <li>Co-auteur de l'article <a href="https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1876052/full" target="_blank" rel="noopener"><em>"Association between Wrist-Worn Actigraphy and the MDS-UPDRS
-            Parkinson's Disease Rating Scale through Machine Learning: An Exploratory Study"</em></a>,
-            <em>Frontiers in Digital Health</em> (2026).</li>
-        </ul>
-        <p class="note">Données patients protégées (santé) — non partageables ; publication scientifique évaluée par les pairs disponible publiquement.</p>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-head">
-          <h3>Profilage de joueurs — Clermont Foot 63</h3>
-          <span class="dates">oct. 2024 – fév. 2025</span>
-        </div>
-        <div class="org">Projet académique, données StatsBomb</div>
-        <ul>
-          <li>Profilage de 50 attaquants professionnels (Ligue 1 2023-24, données StatsBomb) par
-            <strong>K-Means</strong> et Classification Hiérarchique Ascendante — sélection de variables
-            discriminantes par analyse de variance (R²), 3 profils de jeu distincts identifiés :
-            pivot (duels aériens, jeu dos au but), construction (implication dans le jeu combiné) et
-            finisseur limité (faible implication dans la finition).</li>
-          <li>Dashboard interactif <strong>Streamlit</strong> : centiles par joueur, comparaison inter-joueurs,
-            filtrage par club.</li>
-        </ul>
+        <p class="note">Code et données propriété de la LFP — non partageables publiquement.</p>
       </div>
     </div>
   </section>
