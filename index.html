@@ -313,57 +313,50 @@
         </div>
       </div>
       <p class="flag-tag">Projet 4A · binôme · partenariat Clermont Foot 63 · données StatsBomb</p>
-      <p class="lede">
-        Construire un outil d'aide au recrutement capable de traduire des statistiques brutes en
-        <strong>styles de jeu interprétables</strong>. Cas d'étude appliqué aux attaquants de Ligue 1 (saison
-        2023-24), à partir des données événementielles <strong>StatsBomb</strong> (fichier JSON, actions, métriques
-        avancées de type Expected Goals).
-      </p>
-
-      <div class="subhead">Pipeline de données</div>
       <p>
-        Ingestion du JSON, nettoyage (suppression des colonnes administratives et des variables constantes ou
-        redondantes), calcul de l'âge, puis <strong>catégorisation des postes</strong> en 5 familles (attaquants,
-        excentrés, milieux, latéraux, centraux) et centralisation dans une base <strong>SQLite</strong> pour des
-        requêtes ciblées par poste.
+        Traduire des statistiques brutes StatsBomb (Ligue 1, 2023-24) en <strong>styles de jeu interprétables</strong>
+        pour les recruteurs, via un pipeline JSON → SQLite → clustering non supervisé → dashboard Streamlit.
       </p>
 
-      <div class="subhead">Une classification en deux temps</div>
-      <ul>
-        <li><strong>Filtrage par temps de jeu (K-Means).</strong> Segmentation des joueurs sur leurs minutes / apparitions
-          /titularisations (variables normalisées via <code>StandardScaler</code>, nombre de clusters choisi par la méthode
-          du coude). Élimination des joueurs à trop faible volume — statistiquement non représentatifs —, aboutissant à un
-          panel propre de <strong>50 attaquants</strong>.</li>
-        <li><strong>Regroupement par style (CHA).</strong> Classification Hiérarchique Ascendante avec la méthode de
-          <strong>Ward</strong> (minimisation de la variance intra-cluster) sur les métriques de performance ; le
-          dendrogramme fixe le nombre de profils sans le présupposer.</li>
-        <li><strong>Sélection des variables discriminantes (R²).</strong> Pour chaque variable, calcul de la proportion de
-          variance expliquée par l'appartenance au cluster, puis seuillage adapté à chaque groupe à partir du « gap »
-          observé sur l'histogramme (R² &gt; 0,3 / 0,14 / 0,35 selon le cluster). Les variables retenues sont des métriques
-          avancées : <em>xGChain</em>, <em>xGBuildup</em>, <em>npxG</em>, <em>PSxG</em>, touches dans la surface, duels
-          aériens gagnés…</li>
-      </ul>
+      <div class="metrics">
+        <div class="metric"><div class="val">211 → 136</div><div class="lbl">variables StatsBomb retenues</div></div>
+        <div class="metric"><div class="val">68 → 50</div><div class="lbl">attaquants après filtrage</div></div>
+        <div class="metric"><div class="val">3</div><div class="lbl">styles de jeu distincts</div></div>
+        <div class="metric"><div class="val">R² &gt; 0.3</div><div class="lbl">seuil de variable discriminante</div></div>
+      </div>
 
-      <div class="subhead">Trois profils de jeu identifiés</div>
-      <ul>
-        <li><strong>Attaquant pivot</strong> — présence physique : dégagements, longs ballons sous pression et duels
-          aériens gagnés élevés, faible implication dans le dribble et le pressing.</li>
-        <li><strong>Attaquant de construction</strong> — impliqué dans le jeu combiné : fortes valeurs de <em>xGChain</em>
-          et <em>xGBuildup</em>, participation à la progression du ballon vers les zones dangereuses.</li>
-        <li><strong>Attaquant mauvais finisseur</strong> — efficacité offensive limitée : valeurs basses de xG, de
-          finition et de création malgré une présence dans le jeu.</li>
-      </ul>
+      <div class="callout">
+        <strong>Classification en deux temps.</strong> Un premier <strong>K-Means</strong> (k=6, choisi à la méthode
+        du coude) segmente les joueurs par temps de jeu pour écarter ceux dont l'échantillon est statistiquement non
+        représentatif (68 → 52 attaquants). Une <strong>Classification Hiérarchique Ascendante</strong> (linkage de Ward,
+        coupure à distance 25) regroupe ensuite les 52 restants par style de jeu sans présupposer leur nombre — le
+        dendrogramme le révèle. Pour chaque cluster, le R² de chaque variable face à l'appartenance au groupe est
+        calculé, puis un seuil propre à chaque cluster est fixé au « gap » observé sur l'histogramme (0,14 à 0,35 selon
+        le groupe) : la sélection de variables suit la structure des données plutôt qu'une règle arbitraire unique.
+      </div>
 
-      <div class="subhead">Dashboard Streamlit</div>
-      <p>
-        Restitution dans une application <strong>Streamlit</strong> à destination des analystes / recruteurs : fiche
-        joueur détaillée avec son style de jeu, <strong>histogrammes de centiles</strong> par variable discriminante
-        (positionnement du joueur vs l'ensemble des attaquants), <strong>comparaison de deux joueurs</strong> par
-        diagramme radar, <strong>nuage de points</strong> à quadrants délimités par les médianes, et recherche filtrée
-        par club. Visualisations Plotly / Seaborn, normalisation <code>StandardScaler</code>.
-      </p>
+      <details>
+        <summary>Profils identifiés & dashboard</summary>
+        <div class="inner">
+          <p><strong>Pivot</strong> — dégagements, longs ballons sous pression, duels aériens gagnés élevés ; faible
+            en dribble et pressing. <strong>Construction</strong> — fortes valeurs xGChain / xGBuildup, moteur de la
+            progression du ballon. <strong>Mauvais finisseur</strong> — présence dans le jeu mais xG et finition faibles.</p>
+          <p><strong>Dashboard Streamlit</strong> pour les recruteurs : fiche joueur avec centiles par variable
+            discriminante, comparaison de deux joueurs par radar chart, nuage de points à quadrants (médianes),
+            recherche filtrée par club. Visualisations Plotly / Seaborn, normalisation <code>StandardScaler</code>.</p>
+        </div>
+      </details>
 
-      <p class="note">Repo privé (données StatsBomb sous licence) — le code n'est pas publié, mais l'approche est détaillée ici.</p>
+      <div class="tech-pills">
+        <span class="pill">Python</span>
+        <span class="pill">scikit-learn</span>
+        <span class="pill">SciPy</span>
+        <span class="pill">SQLite</span>
+        <span class="pill">Streamlit</span>
+        <span class="pill">Plotly</span>
+      </div>
+
+      <p class="note">Repo privé (données StatsBomb sous licence) — code non publié, approche détaillée ici.</p>
     </div>
 
     <!-- ============ PROJET 3 : MALMÖ ============ -->
@@ -377,48 +370,49 @@
         </div>
       </div>
       <p class="flag-tag">Stage de recherche · Université de Malmö (Suède) · mars – juil. 2025</p>
-      <p class="lede">
-        <strong>Peut-on estimer l'état clinique d'un patient parkinsonien à partir d'un simple capteur porté au
-        poignet ?</strong> L'échelle MDS-UPDRS est évaluée lors de courtes visites cliniques ; l'enjeu est de la
-        prédire à partir de l'activité mesurée en continu à domicile, pour un suivi personnalisé.
-      </p>
-
-      <div class="subhead">Données & extraction de variables</div>
       <p>
-        Cohorte de <strong>30 patients équipés</strong> (27 dans la cohorte finale) d'un capteur Geneactiv enregistrant
-        en continu l'accélération tri-axiale, la température cutanée et la lumière ambiante à <strong>25 Hz</strong>
-        sur plusieurs semaines. À partir du signal brut, j'ai extrait plus de <strong>100 descripteurs</strong> :
-        indicateurs d'activité physique et de sommeil (package R <strong>GGIR</strong>), indicateurs de rythme circadien
-        — IS, IV, RA — (package <strong>nParACT</strong>).
+        <strong>Peut-on estimer l'état clinique d'un patient parkinsonien à partir d'un capteur porté au poignet ?</strong>
+        Prédire les scores cliniques MDS-UPDRS (habituellement évalués en consultation) à partir de l'activité mesurée
+        en continu à domicile, sous un protocole de validation qui ne triche pas sur la généralisation patient.
       </p>
 
-      <div class="subhead">Apprentissage auto-supervisé (embeddings)</div>
-      <p>
-        Au-delà des descripteurs classiques, application de la méthode contrastive <strong>SimCLR</strong> pour générer
-        des <strong>embeddings de dimension 64</strong> capturant des motifs temporels complexes invisibles aux variables
-        traditionnelles. La combinaison des deux niveaux de représentation (features interprétables + embeddings) a permis
-        de bénéficier à la fois de l'explicabilité et de la richesse du signal.
-      </p>
+      <div class="metrics">
+        <div class="metric"><div class="val">27</div><div class="lbl">patients, capteur 25 Hz</div></div>
+        <div class="metric"><div class="val">100+</div><div class="lbl">descripteurs + embeddings 64-d</div></div>
+        <div class="metric"><div class="val">7 × 5</div><div class="lbl">modèles × cibles testés (LOPO)</div></div>
+        <div class="metric"><div class="val">r = 0.89</div><div class="lbl">meilleur score composite</div></div>
+      </div>
 
-      <div class="subhead">Modélisation & protocole anti-fuite</div>
-      <ul>
-        <li>Comparaison de plusieurs régressions (<strong>Ridge, Lasso, ElasticNet, BayesianRidge, DecisionTree, KNN</strong>)
-          pour prédire les sous-scores UPDRS 1, 2, 3 et leurs combinaisons.</li>
-        <li>Sélection de variables par <strong>SHAP</strong> et RRCT, avec courbes RMSE en fonction du nombre de variables
-          retenues.</li>
-        <li>Validation <strong>Leave-One-Patient-Out (LOPO)</strong> : le modèle est toujours testé sur un patient jamais vu
-          à l'entraînement — le seul protocole honnête pour évaluer la généralisation clinique.</li>
-      </ul>
+      <div class="callout">
+        <strong>Deux niveaux de représentation du signal.</strong> Plus de 100 descripteurs interprétables (activité,
+        sommeil, rythmes circadiens — packages R <code>GGIR</code> et <code>nParACT</code>) sont combinés à des
+        <strong>embeddings auto-supervisés SimCLR</strong> (64 dimensions), un encodeur entraîné par patient sur ses
+        propres fenêtres de signal pour capturer des motifs temporels invisibles aux variables classiques. Sept modèles
+        (Ridge, Lasso, ElasticNet, BayesianRidge, DecisionTree, KNN, Dummy) sont croisés avec cinq cibles (UPDRS 1, 2, 3
+        et leurs combinaisons), chacun avec sa propre sélection de variables par seuil SHAP optimisé — puis évalués
+        en <strong>Leave-One-Patient-Out</strong> strict : chaque patient testé n'a jamais été vu à l'entraînement.
+      </div>
 
-      <div class="subhead">Résultats & valorisation</div>
-      <p>
-        Corrélations prédiction / réalité encourageantes, notamment sur les symptômes non moteurs et l'autonomie :
-        <strong>r = 0,75</strong> (Tot1, symptômes non moteurs — RMSE 3,07) et jusqu'à <strong>r = 0,89</strong> sur les
-        scores composites (Tot2 + Tot3 — RMSE 6,61). Ces travaux ont donné lieu à une <strong>publication scientifique
-        évaluée par les pairs</strong>, dont je suis co-auteur.
-      </p>
+      <details>
+        <summary>Résultats par cible & publication</summary>
+        <div class="inner">
+          <p>Meilleurs résultats retenus : <strong>BayesianRidge</strong> sur Tot1 (symptômes non moteurs) —
+            RMSE 3,07, r = 0,752 ; <strong>Lasso</strong> sur le score composite Tot2+Tot3 (autonomie + moteur) —
+            RMSE 6,61, r = 0,888. Les modèles linéaires régularisés (Ridge, Lasso, BayesianRidge) surclassent
+            systématiquement KNN et Decision Tree sur ce volume de données restreint.</p>
+          <p>Ces travaux ont donné lieu à une publication évaluée par les pairs, dont je suis co-auteur.</p>
+        </div>
+      </details>
 
-      <div class="links" style="margin-top:6px; margin-bottom:14px;">
+      <div class="tech-pills">
+        <span class="pill">Python</span>
+        <span class="pill">PyTorch</span>
+        <span class="pill">R (GGIR)</span>
+        <span class="pill">SHAP</span>
+        <span class="pill">scikit-learn</span>
+      </div>
+
+      <div class="links" style="margin-top:16px;">
         <a class="btn" href="https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1876052/full" target="_blank" rel="noopener">Lire l'article (Frontiers in Digital Health, 2026) →</a>
       </div>
 
