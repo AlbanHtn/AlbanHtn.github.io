@@ -141,6 +141,17 @@
 
   .flag-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
 
+  /* Secondary projects grid */
+  .mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: start; }
+  .mini-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; }
+  .mini-card h4 { margin: 0 0 10px; font-size: 1rem; line-height: 1.35; }
+  .mini-card p { margin: 0 0 12px; font-size: 0.88rem; color: var(--text-dim); }
+  .mini-card p strong { color: var(--text); }
+  .mini-card .tech-pills { margin-top: auto; padding-top: 4px; }
+  .mini-card .pill { font-size: 0.74rem; padding: 4px 8px; }
+  .mini-note { font-size: 0.78rem !important; font-style: italic; margin: 12px 0 0 !important; }
+  .mini-thumb { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; display: block; }
+
   @media (max-width: 600px) {
     .hero h1 { font-size: 2rem; }
     header.site nav { gap: 14px; font-size: 0.85rem; }
@@ -154,9 +165,9 @@
   <div class="wrap">
     <span class="brand">Alban Haton</span>
     <nav>
+      <a href="#profil">Profil</a>
       <a href="#projects">Projets</a>
-      <a href="#experience">Expérience</a>
-      <a href="#skills">Compétences</a>
+      <a href="#autres">Autres projets</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -178,6 +189,60 @@
       <a class="btn primary" href="https://github.com/AlbanHtn" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/alban-haton" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="mailto:alban.haton@gmail.com">Me contacter</a>
+    </div>
+  </section>
+
+  <section id="profil">
+    <h2>Profil</h2>
+    <p class="section-sub">Le parcours et les convictions derrière les projets ci-dessous.</p>
+
+    <div class="card">
+      <div class="subhead">Parcours</div>
+      <p>
+        Je termine mon cursus d'ingénieur à <strong>Polytech Clermont</strong> (spécialité Informatique, Modélisation
+        et Data Science — orientation IA &amp; Big Data), diplômé en juillet 2026. Mon parcours s'est construit autour
+        d'une idée simple : une donnée n'a de valeur que si l'on sait la rendre <em>utilisable</em> — par un décideur,
+        un journaliste, un recruteur sportif ou un clinicien. C'est ce qui m'a mené de la recherche appliquée en santé
+        (Université de Malmö, publication scientifique à la clé) au football professionnel.
+      </p>
+
+      <div class="subhead">Ce que j'ai appris à la LFP</div>
+      <p>
+        Mon poste d'<strong>Assistant Chef de Projet Football Data à la LFP Media</strong> (Ligue de Football
+        Professionnel) a confirmé sans ambiguïté mon envie d'être ingénieur data dans le sport. J'y ai bénéficié d'une
+        grande liberté de création et de proposition, sur des missions volontairement variées :
+      </p>
+      <ul>
+        <li><strong>Un projet data full-stack</strong> : conception d'une application Streamlit interne qui automatise
+          l'accès aux données, met en avant l'information réellement importante et fournit des visualisations propres
+          sur lesquelles la rédaction peut s'appuyer.</li>
+        <li><strong>De la R&amp;D sur des projets d'innovation</strong> : construction du modèle, tests, puis
+          présentation des résultats en interne.</li>
+        <li><strong>Les premiers audits qualité de fournisseurs de données</strong> (Event &amp; Tracking), pour
+          comparer objectivement une offre concurrente à ce qui est déjà en place.</li>
+        <li><strong>De l'éditorial</strong> : transformer des données parlantes en <em>facts</em> exploitables, et
+          produire des rapports d'analyse — données éditoriales directement associées à des clips vidéo montés par mes
+          soins — à destination des journalistes, pour des plateaux d'avant-match, des émissions, des interviews, de la
+          rédaction et du documentaire.</li>
+      </ul>
+      <p>
+        C'est cette double casquette qui m'intéresse : être assez rigoureux techniquement pour que le chiffre soit juste,
+        et assez proche du métier pour qu'il serve à quelque chose.
+      </p>
+
+      <div class="subhead">Le sport, avant d'être un sujet de données</div>
+      <p>
+        Le sport est d'abord une passion. Je suis assidûment le football, le basket et le tennis, et je ne rate pas les
+        grands rendez-vous — Coupes du monde, Jeux Olympiques, championnats internationaux, quel que soit le sport.
+        J'ai pratiqué en loisir le golf, le tennis de table, le basket, le badminton, le judo, le ski et la natation ;
+        aujourd'hui, c'est surtout le tennis et le football.
+      </p>
+      <p>
+        Cette passion nourrit directement ma pratique technique : je passe beaucoup de temps à décortiquer les
+        confrontations à venir pour identifier les <strong>indicateurs d'avant-match les plus déterminants</strong> sur
+        ce qui va réellement se produire — une démarche d'aide au pronostic qui est exactement la question posée par mon
+        projet phare sur l'efficience du marché des paris. Et, plus anecdotiquement, je collectionne les cartes de sport.
+      </p>
     </div>
   </section>
 
@@ -420,50 +485,89 @@
     </div>
   </section>
 
-  <section id="experience">
-    <h2>Expérience professionnelle</h2>
-    <p class="section-sub">En environnement de production, sur des données propriétaires.</p>
+  <section id="autres">
+    <h2>Autres projets du cursus</h2>
+    <p class="section-sub">
+      Des travaux de groupe menés pendant ma formation, sur des domaines volontairement variés — vision par ordinateur,
+      apprentissage par renforcement, BI, bases de données.
+    </p>
 
-    <div class="card">
-      <div class="exp-item">
-        <div class="exp-head">
-          <h3>Assistant Chef de Projet Football Data</h3>
-          <span class="dates">fév. – août 2026</span>
+    <div class="mini-grid">
+
+      <div class="mini-card">
+        <h4>Estimation de profondeur monoculaire — fine-tuning LoRA</h4>
+        <p>
+          Adaptation du modèle de fondation <strong>Depth Anything V2</strong> à un jeu d'images industrielles
+          (caméras Zivid, pneus stockés) par <strong>LoRA</strong>, pour corriger un fort <em>domain gap</em>.
+          Cibler les couches denses plutôt que les seules couches d'attention a été déterminant pour retrouver
+          l'échelle métrique : le RMSE passe de <strong>1,81 m à 7 cm</strong> et la précision géométrique
+          (δ &lt; 1.25) de <strong>17 % à 99,4 %</strong>, avec un F1 de 0,96 sur la détection d'obstacles proches.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">PyTorch</span><span class="pill">Hugging Face</span><span class="pill">PEFT / LoRA</span>
         </div>
-        <div class="org">LFP Media (Ligue de Football Professionnel), Paris</div>
-        <ul>
-          <li>Conception en autonomie d'une plateforme <strong>Streamlit</strong> centralisant 11 saisons
-            (2 953 joueurs, 474 variables) de données Opta et 2 saisons Genius Sports (API REST),
-            optimisant le traitement et la fiabilité des requêtes data de la rédaction.</li>
-          <li>Conception de rapports HTML d'audit qualité de prestataires Event &amp; Tracking — analyse
-            comparative automatisée, métriques de divergence (RMSE, MAE, MAPE), détection d'anomalies.</li>
-          <li>Production de dossiers statistiques tactiques pour Ligue 1+ et diffuseurs internationaux
-            (5 à 10 livrables hebdomadaires).</li>
-        </ul>
-        <p class="note">Code et données propriété de la LFP — non partageables publiquement.</p>
+        <p class="mini-note">Projet de groupe · vision par ordinateur</p>
       </div>
-    </div>
-  </section>
 
-  <section id="skills">
-    <h2>Compétences</h2>
-    <div class="skills-grid">
-      <div class="skill-cat">
-        <h4>Machine Learning</h4>
-        <p>Modélisation supervisée/non supervisée, séries temporelles, feature engineering, Time Series Split, LOPO anti-leakage, SHAP.</p>
+      <div class="mini-card">
+        <h4>Apprentissage par renforcement — contrôle de trajectoire (cas Michelin)</h4>
+        <p>
+          Implémentation d'un agent <strong>DDPG</strong> (acteur-critique, <em>experience replay</em>, réseaux cibles,
+          bruit d'exploration) pour piloter un véhicule sur circuit à la limite d'adhérence, en s'appuyant sur un modèle
+          de rigidité de dérive du pneumatique. Volet complémentaire d'<strong>optimisation bayésienne</strong> pour le
+          calibrage de ce modèle.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">TensorFlow</span><span class="pill">DDPG</span><span class="pill">Optim. bayésienne</span>
+        </div>
+        <p class="mini-note">Projet de groupe · RL &amp; optimisation</p>
       </div>
-      <div class="skill-cat">
-        <h4>Langages & Ingénierie</h4>
-        <p>Python (scikit-learn, XGBoost, SHAP, pandas), SQL, Git/GitHub, API REST, pipelines ETL, Docker, PostgreSQL, SQLite.</p>
+
+      <div class="mini-card">
+        <h4>Sécurité en France vs Europe — tableau de bord Power BI</h4>
+        <a href="https://github.com/MathisPicasse/Power-BI-Securite-en-France-et-Europe" target="_blank" rel="noopener">
+          <img class="mini-thumb" src="assets/powerbi_preview.jpeg" alt="Aperçu du tableau de bord Power BI sur la sécurité en France">
+        </a>
+        <p>
+          Sujet libre, en binôme : l'essentiel du travail a porté sur la <strong>recherche de sources fiables</strong>
+          (principalement INSEE), leur nettoyage et leur mise en forme sous <strong>Power Query</strong>. Le rapport
+          compte <strong>7 pages thématiques</strong> (faits, profils auteurs/victimes, police, récidives, comparaison UE),
+          rendues navigables par mesures DAX, segments et signets.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">Power BI</span><span class="pill">Power Query</span><span class="pill">DAX</span>
+        </div>
+        <p class="mini-note">
+          Binôme · <a href="https://github.com/MathisPicasse/Power-BI-Securite-en-France-et-Europe" target="_blank" rel="noopener">repo public &amp; captures des 7 pages →</a>
+        </p>
       </div>
-      <div class="skill-cat">
-        <h4>Sports Analytics</h4>
-        <p>Flux Event &amp; Tracking (Opta, Genius Sports), KPIs de performance, métriques de recrutement, classement Elo.</p>
+
+      <div class="mini-card">
+        <h4>Reconnaissance de signes — vision par ordinateur</h4>
+        <p>
+          Projet de détection et de reconnaissance de signes à partir d'images, autour d'un pipeline classique de
+          vision par ordinateur : préparation du jeu d'images, entraînement d'un modèle de classification et
+          évaluation des performances.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">Python</span><span class="pill">Computer Vision</span>
+        </div>
+        <p class="mini-note">Binôme · vision par ordinateur</p>
       </div>
-      <div class="skill-cat">
-        <h4>Visualisation & Produit</h4>
-        <p>Streamlit, Power BI, Plotly, Matplotlib.</p>
+
+      <div class="mini-card">
+        <h4>MusicShop — base de données &amp; application Java</h4>
+        <p>
+          Conception d'un schéma relationnel <strong>SQL</strong> pour une boutique de musique (modélisation,
+          contraintes d'intégrité, requêtes) et développement de l'application <strong>Java</strong> associée pour
+          l'exploiter.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">Java</span><span class="pill">SQL</span>
+        </div>
+        <p class="mini-note">Binôme · bases de données &amp; POO</p>
       </div>
+
     </div>
   </section>
 
