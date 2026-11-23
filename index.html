@@ -3,8 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alban Haton — Portfolio</title>
-<meta name="description" content="Alban Haton — Ingénieur Data / Data Scientist, spécialisation Sports Analytics. Pipelines end-to-end, modélisation prédictive, recherche appliquée.">
+<title>Alban Haton — Ingénieur Data, Sports Analytics</title>
+<meta name="description" content="Ingénieur Data diplômé de Polytech Clermont, ex-LFP Media. Plateformes de données, modélisation prédictive, recherche publiée. Disponible immédiatement.">
+<link rel="canonical" href="https://albanhtn.github.io/">
+<meta name="theme-color" content="#0d1117">
+
+<!-- Aperçu de partage (LinkedIn, réseaux sociaux) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Alban Haton">
+<meta property="og:url" content="https://albanhtn.github.io/">
+<meta property="og:title" content="Alban Haton — Ingénieur Data, Sports Analytics">
+<meta property="og:description" content="Ingénieur Data diplômé de Polytech Clermont, ex-LFP Media. Plateformes de données, modélisation prédictive, recherche publiée. Disponible immédiatement.">
+<meta property="og:image" content="https://albanhtn.github.io/assets/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Alban Haton — Ingénieur Data · Sports Analytics — Disponible immédiatement">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alban Haton — Ingénieur Data, Sports Analytics">
+<meta name="twitter:description" content="Ingénieur Data diplômé de Polytech Clermont, ex-LFP Media. Plateformes de données, modélisation prédictive, recherche publiée. Disponible immédiatement.">
+<meta name="twitter:image" content="https://albanhtn.github.io/assets/og/og-image.png">
+
+<link rel="icon" href="assets/og/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/og/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/og/apple-touch-icon.png">
 <style>
   :root {
     --bg: #ffffff; --bg-alt: #f6f7f9; --text: #14161a; --text-dim: #55606e;
@@ -15,14 +37,6 @@
       --bg: #0d1117; --bg-alt: #11151c; --text: #e6e9ef; --text-dim: #9aa4b2;
       --border: #232833; --accent: #5b8def; --accent-soft: #16213a; --card: #131720; --code-bg: #191e28;
     }
-  }
-  :root[data-theme="dark"] {
-    --bg: #0d1117; --bg-alt: #11151c; --text: #e6e9ef; --text-dim: #9aa4b2;
-    --border: #232833; --accent: #5b8def; --accent-soft: #16213a; --card: #131720; --code-bg: #191e28;
-  }
-  :root[data-theme="light"] {
-    --bg: #ffffff; --bg-alt: #f6f7f9; --text: #14161a; --text-dim: #55606e;
-    --border: #e3e6ea; --accent: #2563eb; --accent-soft: #eaf0fe; --card: #ffffff; --code-bg: #f0f2f5;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -40,18 +54,33 @@
     background: color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
   }
-  header.site .wrap { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; }
-  header.site nav { display: flex; gap: 22px; font-size: 0.92rem; }
-  header.site .brand { font-weight: 700; letter-spacing: -0.01em; }
+  header.site .wrap { display: flex; align-items: center; gap: 22px; padding: 12px 24px; }
+  header.site .brand { font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; color: var(--text); }
+  header.site .brand:hover { text-decoration: none; }
+  header.site nav { display: flex; gap: 22px; font-size: 0.92rem; margin-left: auto; white-space: nowrap;
+    overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  header.site nav::-webkit-scrollbar { display: none; }
+  .btn-cv { padding: 6px 13px; font-size: 0.84rem; border-radius: 7px; white-space: nowrap;
+    background: var(--accent); color: #fff; border: 1px solid var(--accent); font-weight: 600; }
+  .btn-cv:hover { text-decoration: none; opacity: 0.9; }
 
-  .hero { padding: 72px 0 56px; }
+  .hero { padding: 64px 0 52px; }
+  .hero .metrics { margin: 30px 0 32px; max-width: 780px; }
+  .hero .metric .val { font-size: 1.45rem; }
+  .metric .val { white-space: nowrap; }
+  .metric .val .unit { font-size: 0.68em; font-weight: 600; }
+  .hero .metric .lbl { font-size: 0.78rem; line-height: 1.4; }
   .hero .kicker {
     display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
     text-transform: uppercase; color: var(--accent); background: var(--accent-soft);
     padding: 4px 10px; border-radius: 999px; margin-bottom: 18px;
   }
   .hero h1 { font-size: 2.5rem; line-height: 1.18; margin: 0 0 14px; letter-spacing: -0.02em; }
-  .hero p.lead { font-size: 1.1rem; color: var(--text-dim); max-width: 640px; margin: 0 0 28px; }
+  .hero p.lead { font-size: 1.08rem; color: var(--text-dim); max-width: 680px; margin: 0 0 14px; }
+  .hero p.lead strong { color: var(--text); font-weight: 600; }
+  .hero .kicker::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: #22a55a; margin-right: 8px; vertical-align: 1px; }
+  .hero .kicker { text-transform: none; letter-spacing: 0; font-size: 0.84rem; }
   .hero .links { display: flex; gap: 12px; flex-wrap: wrap; }
 
   .btn {
@@ -63,6 +92,7 @@
   .btn.primary:hover { opacity: 0.9; }
 
   section { padding: 48px 0; border-top: 1px solid var(--border); }
+  section[id], #top { scroll-margin-top: 70px; }
   section h2 { font-size: 1.5rem; margin: 0 0 8px; letter-spacing: -0.01em; }
   section p.section-sub { color: var(--text-dim); margin: 0 0 32px; max-width: 620px; }
 
@@ -81,10 +111,6 @@
   .metric .val { font-size: 1.35rem; font-weight: 700; color: var(--accent); }
   .metric .lbl { font-size: 0.76rem; color: var(--text-dim); margin-top: 2px; }
 
-  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.88rem; }
-  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); }
-  th { color: var(--text-dim); font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.03em; }
-  td strong { color: var(--accent); }
 
   .callout {
     background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0;
@@ -105,6 +131,7 @@
   .exp-item .dates { color: var(--text-dim); font-size: 0.8rem; white-space: nowrap; }
   .exp-item ul { margin: 8px 0 0; padding-left: 20px; font-size: 0.92rem; color: var(--text); }
   .exp-item li { margin-bottom: 5px; }
+  .exp-item .exp-text { font-size: 0.9rem; margin: 8px 0 0; }
   .exp-item .note {
     font-size: 0.84rem; color: var(--text-dim); font-style: italic; margin-top: 8px;
   }
@@ -139,7 +166,47 @@
   details .inner { font-size: 0.9rem; color: var(--text-dim); }
   details .inner strong { color: var(--text); }
 
+  .card > .note { font-size: 0.82rem; color: var(--text-dim); font-style: italic; margin: 14px 0 0; }
   .flag-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
+
+  /* Schéma d'architecture (section Expérience) */
+  .arch { display: grid; grid-template-columns: 1fr auto 0.8fr auto 1.3fr auto 1fr; align-items: stretch;
+    gap: 8px; margin: 22px 0 8px; }
+  .arch-step { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px;
+    display: flex; flex-direction: column; gap: 3px; font-size: 0.8rem; color: var(--text-dim); line-height: 1.4; }
+  .arch-step .arch-k { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--accent); margin-bottom: 4px; }
+  .arch-step.main { border-color: var(--accent); background: var(--accent-soft); }
+  .arch-step.main span:not(.arch-k) { color: var(--text); }
+  .arch-arrow { align-self: center; color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+  .arch-caption { font-size: 0.78rem; color: var(--text-dim); margin: 0 0 6px; }
+  @media (max-width: 720px) {
+    .arch { grid-template-columns: 1fr; gap: 6px; }
+    .arch-arrow { justify-self: center; transform: rotate(90deg); line-height: 1; }
+  }
+
+  /* Projets en cours */
+  .status { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+    white-space: nowrap; border: 1px solid; }
+  .status.live { color: #1a7f4b; background: #e6f6ec; border-color: #b6e3c6; }
+  .status.idea { color: #8a5a00; background: #fdf3dc; border-color: #f0d79a; }
+  @media (prefers-color-scheme: dark) {
+    .status.live { color: #5fd38d; background: #0f2a1c; border-color: #1d4d33; }
+    .status.idea { color: #f0c062; background: #2c2210; border-color: #57431c; }
+  }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 18px 0 6px; }
+  .flow span { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px;
+    font-size: 0.8rem; color: var(--text); }
+  .flow span.end { border-color: var(--accent); background: var(--accent-soft); }
+  .flow i { font-style: normal; color: var(--accent); font-weight: 700; }
+  .shot { margin: 18px 0 6px; }
+  .shot img { background: #131311; }
+
+  /* À propos et contact */
+  .about { font-size: 1rem; margin: 0 0 22px; }
+  .contact-line { color: var(--text-dim); max-width: 680px; margin: 0 0 22px; }
+  .contact-line strong { color: var(--text); }
+  .skill-cat p strong { color: var(--text); }
 
   /* Secondary projects grid */
   .mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: start; }
@@ -154,8 +221,16 @@
 
   @media (max-width: 600px) {
     .hero h1 { font-size: 2rem; }
-    header.site nav { gap: 14px; font-size: 0.85rem; }
+    header.site .wrap { flex-wrap: wrap; row-gap: 8px; padding: 10px 16px; }
+    header.site .btn-cv { margin-left: auto; }
+    section[id], #top { scroll-margin-top: 104px; }
+    header.site nav { order: 3; width: 100%; margin-left: 0; gap: 18px; font-size: 0.86rem; padding: 0 28px 2px 0;
+      -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); }
     .card { padding: 22px; }
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .metric { padding: 12px 12px; }
+    .metric .val, .hero .metric .val { white-space: normal; font-size: 1.2rem; }
   }
 </style>
 </head>
@@ -163,104 +238,232 @@
 
 <header class="site">
   <div class="wrap">
-    <span class="brand">Alban Haton</span>
-    <nav>
-      <a href="#profil">Profil</a>
+    <a class="brand" href="#top">Alban Haton</a>
+    <nav aria-label="Navigation principale">
+      <a href="#experience">Expérience</a>
       <a href="#projects">Projets</a>
-      <a href="#autres">Autres projets</a>
+      <a href="#en-cours">En cours</a>
+      <a href="#competences">Compétences</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a class="btn-cv" href="assets/CV_Alban_Haton.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="top">
 
   <section class="hero" style="border-top:none;">
-    <span class="kicker">Data Science · Sports Analytics</span>
-    <h1>Ingénieur Data spécialisé en Sports Analytics.</h1>
+    <span class="kicker">Disponible immédiatement · CDI Sport, Betting, Tech</span>
+    <h1>Ingénieur Data, spécialisé en Sports Analytics.</h1>
     <p class="lead">
-      Élève-ingénieur en fin de cursus (Polytech Clermont, spécialité IA &amp; Big Data). Je construis des
-      pipelines de données et des modèles prédictifs avec une exigence de rigueur méthodologique —
-      protocoles anti-fuite stricts, validation adaptée à la structure des données, résultats honnêtes
-      plutôt qu'optimisés pour impressionner. Expérience en production (LFP Media) et en recherche appliquée
-      (Université de Malmö, publication dans <em>Frontiers in Digital Health</em>).
+      Ingénieur diplômé de Polytech Clermont (Mathématiques appliquées, 2026). Pendant neuf mois au Pôle Data
+      de la <strong>LFP Media</strong>, j'ai conçu une plateforme de statistiques, des rapports automatisés et des
+      analyses pour ceux qui font vivre la Ligue 1 à l'antenne. Avant cela, un stage de recherche à
+      l'<strong>Université de Malmö</strong> m'a conduit à co-signer un article dans <em>Frontiers in Digital Health</em>.
     </p>
+    <p class="lead">
+      Ce que j'aime : partir de la donnée brute et aller jusqu'à l'outil ou l'analyse qu'une équipe utilise vraiment.
+    </p>
+
+    <div class="metrics">
+      <div class="metric"><div class="val">9 <span class="unit">mois</span></div><div class="lbl">LFP Media, stage puis CDD</div></div>
+      <div class="metric"><div class="val">2&#8239;953 <span class="unit">joueurs</span></div><div class="lbl">11 saisons, 474 variables dans la plateforme LFP</div></div>
+      <div class="metric"><div class="val">52&#8239;580 <span class="unit">matchs</span></div><div class="lbl">modèle de prédiction, 5 grands championnats</div></div>
+      <div class="metric"><div class="val">1 <span class="unit">article</span></div><div class="lbl"><em>Frontiers in Digital Health</em>, 2026</div></div>
+    </div>
+
     <div class="links">
-      <a class="btn primary" href="https://github.com/AlbanHtn" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn primary" href="assets/CV_Alban_Haton.pdf" download="CV_Alban_Haton.pdf">Télécharger le CV</a>
       <a class="btn" href="https://www.linkedin.com/in/alban-haton" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/AlbanHtn" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="mailto:alban.haton@gmail.com">Me contacter</a>
     </div>
   </section>
 
-  <section id="profil">
-    <h2>Profil</h2>
-    <p class="section-sub">Le parcours et les convictions derrière les projets ci-dessous.</p>
+  <section id="experience">
+    <h2>Expérience</h2>
+    <p class="section-sub">Neuf mois en production au Pôle Data de la LFP Media, et un stage de recherche qui s'est conclu par une publication.</p>
 
+    <!-- ============ LFP MEDIA ============ -->
     <div class="card">
-      <div class="subhead">Parcours</div>
-      <p>
-        Je termine mon cursus d'ingénieur à <strong>Polytech Clermont</strong> (spécialité Informatique, Modélisation
-        et Data Science — orientation IA &amp; Big Data), diplômé en juillet 2026. Mon parcours s'est construit autour
-        d'une idée simple : une donnée n'a de valeur que si l'on sait la rendre <em>utilisable</em> — par un décideur,
-        un journaliste, un recruteur sportif ou un clinicien. C'est ce qui m'a mené de la recherche appliquée en santé
-        (Université de Malmö, publication scientifique à la clé) au football professionnel.
+      <div class="project-header">
+        <h3>LFP Media — Pôle Data</h3>
+        <div class="tags">
+          <span class="tag">Plateforme data</span>
+          <span class="tag">Automatisation</span>
+          <span class="tag">Médias</span>
+        </div>
+      </div>
+      <p class="flag-tag">Direction Médias et Production · Paris · fév. – nov. 2026 · stage, puis CDD</p>
+      <p class="lede">
+        LFP Media est la filiale commerciale de la Ligue de Football Professionnel. Au Pôle Data, j'ai d'abord été
+        <strong>Assistant Chef de Projet Football Data</strong> (stage), puis <strong>Chargé de Mission Football Data</strong>
+        (CDD). Le fil conducteur : faire arriver la bonne statistique, au bon moment, chez ceux qui racontent la Ligue 1 —
+        la rédaction, l'antenne, le magazine et les diffuseurs internationaux.
       </p>
 
-      <div class="subhead">Ce que j'ai appris à la LFP</div>
+      <div class="metrics">
+        <div class="metric"><div class="val">11 <span class="unit">saisons</span></div><div class="lbl">de données Opta, plus 2 saisons Genius Sports</div></div>
+        <div class="metric"><div class="val">474 <span class="unit">variables</span></div><div class="lbl">dans la plateforme de statistiques</div></div>
+        <div class="metric"><div class="val">5 à 10 <span class="unit">livrables</span></div><div class="lbl">par semaine, pour Ligue 1+ et les diffuseurs</div></div>
+        <div class="metric"><div class="val">2 <span class="unit">prestataires</span></div><div class="lbl">audités face aux flux de production</div></div>
+      </div>
+
+      <div class="arch" role="img" aria-label="Architecture de la plateforme : sources Opta et Genius Sports, traitement en Python et Pandas, plateforme Streamlit, destinataires rédaction, antenne, magazine et diffuseurs internationaux">
+        <div class="arch-step">
+          <span class="arch-k">Sources</span>
+          <span>Opta · 11&nbsp;saisons</span>
+          <span>Genius Sports · 2&nbsp;saisons, API REST</span>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">→</div>
+        <div class="arch-step">
+          <span class="arch-k">Traitement</span>
+          <span>Python · Pandas</span>
+          <span>Visualisations Plotly</span>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">→</div>
+        <div class="arch-step main">
+          <span class="arch-k">Plateforme Streamlit</span>
+          <span>Profils joueurs et équipes</span>
+          <span>Comparaison d'équipes</span>
+          <span>Records historiques · glossaire</span>
+          <span>Rapport hebdomadaire</span>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">→</div>
+        <div class="arch-step">
+          <span class="arch-k">Destinataires</span>
+          <span>Rédaction · antenne</span>
+          <span>Magazine</span>
+          <span>Diffuseurs internationaux</span>
+        </div>
+      </div>
+      <p class="arch-caption">Schéma de principe de la plateforme — aucune donnée ni capture de l'outil.</p>
+
+      <div class="subhead">Une plateforme de statistiques, conçue et développée en autonomie</div>
       <p>
-        Mon poste d'<strong>Assistant Chef de Projet Football Data à la LFP Media</strong> (Ligue de Football
-        Professionnel) a confirmé sans ambiguïté mon envie d'être ingénieur data dans le sport. J'y ai bénéficié d'une
-        grande liberté de création et de proposition, sur des missions volontairement variées :
-      </p>
-      <ul>
-        <li><strong>Un projet data full-stack</strong> : conception d'une application Streamlit interne qui automatise
-          l'accès aux données, met en avant l'information réellement importante et fournit des visualisations propres
-          sur lesquelles la rédaction peut s'appuyer.</li>
-        <li><strong>De la R&amp;D sur des projets d'innovation</strong> : construction du modèle, tests, puis
-          présentation des résultats en interne.</li>
-        <li><strong>Les premiers audits qualité de fournisseurs de données</strong> (Event &amp; Tracking), pour
-          comparer objectivement une offre concurrente à ce qui est déjà en place.</li>
-        <li><strong>De l'éditorial</strong> : transformer des données parlantes en <em>facts</em> exploitables, et
-          produire des rapports d'analyse — données éditoriales directement associées à des clips vidéo montés par mes
-          soins — à destination des journalistes, pour des plateaux d'avant-match, des émissions, des interviews, de la
-          rédaction et du documentaire.</li>
-      </ul>
-      <p>
-        C'est cette double casquette qui m'intéresse : être assez rigoureux techniquement pour que le chiffre soit juste,
-        et assez proche du métier pour qu'il serve à quelque chose.
+        Elle réunit 11 saisons de données Opta et 2 de Genius Sports, récupérées via API REST, soit
+        <strong>2&#8239;953 joueurs et 474 variables</strong>. Elle propose des profils joueurs et équipes, la comparaison
+        d'équipes, les records historiques et un glossaire, et fiabilise et accélère les requêtes data de la rédaction.
+        Pendant le CDD, j'y ai intégré la saison 2026-27, puis j'ai organisé la passation de l'outil à la DSI.
       </p>
 
-      <div class="subhead">Le sport, avant d'être un sujet de données</div>
+      <div class="subhead">Des rapports hebdomadaires qui s'écrivent seuls</div>
       <p>
-        Le sport est d'abord une passion. Je suis assidûment le football, le basket et le tennis, et je ne rate pas les
-        grands rendez-vous — Coupes du monde, Jeux Olympiques, championnats internationaux, quel que soit le sport.
-        J'ai pratiqué en loisir le golf, le tennis de table, le basket, le badminton, le judo, le ski et la natation ;
-        aujourd'hui, c'est surtout le tennis et le football.
+        Une page de la plateforme génère, à chaque journée, un <strong>rapport rédigé en langage naturel</strong> : les faits
+        à retenir comparés à l'historique depuis 2015-16 (à nombre de matchs égal), les projections au rythme actuel, les
+        séries en cours et les performances marquantes, à partir des données event et physiques. Le rapport se décline en
+        « focus régionaux » par nationalité (par exemple l'Afrique) pour les diffuseurs internationaux.
       </p>
+
+      <div class="subhead">L'audit de la donnée</div>
       <p>
-        Cette passion nourrit directement ma pratique technique : je passe beaucoup de temps à décortiquer les
-        confrontations à venir pour identifier les <strong>indicateurs d'avant-match les plus déterminants</strong> sur
-        ce qui va réellement se produire — une démarche d'aide au pronostic qui est exactement la question posée par mon
-        projet phare sur l'efficience du marché des paris. Et, plus anecdotiquement, je collectionne les cartes de sport.
+        Des rapports HTML générés en Python évaluent <strong>deux prestataires, un de tracking et un d'event</strong>, face aux
+        flux de production : protocole comparatif, métriques de divergence (RMSE, MAE, MAPE) et détection d'anomalies.
+        Livrable : un référentiel des variables essentielles attendues d'un nouveau prestataire, devenu la base des échanges
+        avec les fournisseurs.
       </p>
+
+      <details>
+        <summary>Aussi au Pôle Data</summary>
+        <div class="inner">
+          <p><strong>Analyses et production médias</strong> — dossiers statistiques d'avant-match pour Ligue 1+ et les
+            diffuseurs internationaux (focus joueurs, xG, classements, timecodes, profils comparatifs, visualisations),
+            jusqu'à 20-30 pages ; demandes ponctuelles de la rédaction et insights hebdomadaires FR/EN.</p>
+          <p><strong>Data Line</strong> — participation à la publication des épisodes de <em>Data Line</em>, le format data
+            de Ligue 1+.</p>
+          <p><strong>R&amp;D</strong> — conception et test de modèles de visualisation de données pour l'enrichissement du
+            signal broadcast.</p>
+          <p><strong>Reporting</strong> — rapport d'usage des outils data mis à disposition des clubs de Ligue 1 et Ligue 2
+            (plateforme d'analyse, API, flux temps réel), d'août à octobre 2026.</p>
+        </div>
+      </details>
+
+      <div class="tech-pills">
+        <span class="pill">Python</span>
+        <span class="pill">Pandas</span>
+        <span class="pill">Plotly</span>
+        <span class="pill">Streamlit</span>
+        <span class="pill">API REST</span>
+      </div>
+
+      <p class="note">Outils et données propriété de la LFP : ni capture, ni extrait de rapport, ni donnée ne sont publiés ici.</p>
+    </div>
+
+    <!-- ============ UNIVERSITÉ DE MALMÖ ============ -->
+    <div class="card">
+      <div class="project-header">
+        <h3>Université de Malmö — Stage de recherche</h3>
+        <div class="tags">
+          <span class="tag">Recherche</span>
+          <span class="tag">Signal / Santé</span>
+          <span class="tag">Publication</span>
+        </div>
+      </div>
+      <p class="flag-tag">Suède · mars – juil. 2025 · publication dans Frontiers in Digital Health</p>
+      <p class="lede">
+        <strong>Peut-on estimer la sévérité de la maladie de Parkinson à partir d'un capteur porté au poignet ?</strong>
+        Le score clinique de référence, la MDS-UPDRS, s'évalue en consultation ; l'enjeu est de l'approcher à partir de
+        l'activité enregistrée en continu à domicile.
+      </p>
+
+      <div class="metrics">
+        <div class="metric"><div class="val">27 <span class="unit">patients</span></div><div class="lbl">capteur GENEActiv, 25&nbsp;Hz</div></div>
+        <div class="metric"><div class="val">100+ <span class="unit">descripteurs</span></div><div class="lbl">activité, sommeil, rythmes circadiens</div></div>
+        <div class="metric"><div class="val">r&nbsp;=&nbsp;0,89</div><div class="lbl">sur les scores composites</div></div>
+        <div class="metric"><div class="val">3<sup>e</sup> <span class="unit">auteur</span></div><div class="lbl">sur 7, contribution «&nbsp;Software&nbsp;»</div></div>
+      </div>
+
+      <div class="callout">
+        <strong>Deux niveaux de représentation du signal.</strong> Plus de 100 descripteurs interprétables, extraits avec
+        les packages R <code>GGIR</code> et <code>nParACT</code>, sont complétés par des <strong>embeddings SimCLR utilisés
+        comme variables</strong>. Plusieurs familles de régression sont comparées (linéaires régularisées, arbre de décision,
+        k plus proches voisins), avec une sélection de variables par SHAP et une évaluation en
+        <strong>Leave-One-Patient-Out</strong> : le patient testé est toujours exclu de l'entraînement.
+      </div>
+
+      <details>
+        <summary>Résultats et publication</summary>
+        <div class="inner">
+          <p><strong>r&nbsp;=&nbsp;0,75</strong> sur les sous-scores et <strong>r&nbsp;=&nbsp;0,89</strong> sur les scores
+            composites.</p>
+          <p>Article publié le 13 juillet 2026 : <em>Association between Wrist-Worn Actigraphy and the MDS-UPDRS Parkinson's
+            Disease Rating Scale through Machine Learning: An Exploratory Study</em>.</p>
+          <p><strong>Limite.</strong> Sélection de variables calculée sur l'ensemble de la cohorte : des performances à
+            confirmer sur une cohorte indépendante, ce qui justifie le qualificatif d'étude <em>exploratoire</em> de
+            l'article.</p>
+        </div>
+      </details>
+
+      <div class="tech-pills">
+        <span class="pill">Python</span>
+        <span class="pill">R (GGIR)</span>
+        <span class="pill">SHAP</span>
+        <span class="pill">scikit-learn</span>
+      </div>
+
+      <div class="links" style="margin-top:16px;">
+        <a class="btn" href="https://doi.org/10.3389/fdgth.2026.1876052" target="_blank" rel="noopener">Lire l'article (Frontiers in Digital Health, 2026) →</a>
+      </div>
+
+      <p class="note">Données patients protégées (santé) — non partageables ; l'article est en accès libre.</p>
     </div>
   </section>
 
   <section id="projects">
-    <h2>Projets techniques</h2>
-    <p class="section-sub">Trois études de cas complètes — de la donnée brute au résultat, avec le raisonnement méthodologique à chaque étape.</p>
+    <h2>Projets sport</h2>
+    <p class="section-sub">Deux études de cas menées pendant mon cursus — de la donnée brute au résultat, avec le raisonnement méthodologique à chaque étape.</p>
 
     <!-- ============ PROJET 1 : FOOTBALL ============ -->
     <div class="card">
       <div class="project-header">
-        <h3>⚽ Prédiction de résultats & efficience du marché des paris</h3>
+        <h3>Prédiction de résultats et efficience du marché des paris</h3>
         <div class="tags">
           <span class="tag">ML</span>
           <span class="tag">Quant / Betting</span>
           <span class="tag">MLOps</span>
         </div>
       </div>
-      <p class="flag-tag">Projet phare · Projet 5A · binôme (Polytech Clermont) · repo public</p>
+      <p class="flag-tag">Projet 5A · sept. 2025 – janv. 2026 · binôme avec Simon Guillet · dépôt public</p>
       <p class="lede">
         <strong>Les données sportives publiques (Elo, forme, statistiques) suffisent-elles à prédire un match
         aussi bien que les cotes des bookmakers — sans utiliser ces cotes ?</strong> Une chaîne de modélisation
@@ -269,10 +472,10 @@
       </p>
 
       <div class="metrics">
-        <div class="metric"><div class="val">51.9%</div><div class="lbl">Accuracy XGBoost aveugle</div></div>
-        <div class="metric"><div class="val">96.7%</div><div class="lbl">du signal du marché capté</div></div>
-        <div class="metric"><div class="val">1.7%</div><div class="lbl">ECE (calibration)</div></div>
-        <div class="metric"><div class="val">−5.8%</div><div class="lbl">ROI ≈ marge bookmaker</div></div>
+        <div class="metric"><div class="val">51,9&nbsp;%</div><div class="lbl">Accuracy XGBoost sans les cotes</div></div>
+        <div class="metric"><div class="val">96,7&nbsp;%</div><div class="lbl">de la performance du marché</div></div>
+        <div class="metric"><div class="val">1,7&nbsp;%</div><div class="lbl">ECE (calibration)</div></div>
+        <div class="metric"><div class="val">−5,8&nbsp;%</div><div class="lbl">ROI, proche de la marge du bookmaker</div></div>
       </div>
 
       <div class="subhead">Ingénierie des données — le vrai défi</div>
@@ -316,25 +519,24 @@
 
       <div class="fig-grid">
         <figure>
-          <img src="assets/football/calibration_curve.png" alt="Courbe de calibration du modèle XGBoost, ECE = 1,7%">
+          <img src="assets/football/calibration_curve.png" width="691" height="702" loading="lazy" alt="Courbe de calibration du modèle XGBoost, ECE = 1,7 %">
           <figcaption><strong>Calibration (ECE 1,7 %).</strong> Quand le modèle annonce 60 % de victoire, l'événement
             se produit ≈ 60 % du temps — condition nécessaire à un calcul d'espérance de gain fiable.</figcaption>
         </figure>
         <figure>
-          <img src="assets/football/shap_summary.png" alt="Graphique SHAP des variables du XGBoost">
+          <img src="assets/football/shap_summary.png" width="788" height="740" loading="lazy" alt="Graphique SHAP des variables du XGBoost">
           <figcaption><strong>Explicabilité SHAP.</strong> Le modèle suit une logique pseudo-bayésienne : l'écart Elo
             fixe la tendance lourde, les statistiques récentes ajustent à la marge.</figcaption>
         </figure>
       </div>
 
       <div class="callout">
-        <strong>Le résultat honnête (validation de l'EMH).</strong> Le XGBoost aveugle atteint 51,9 % d'accuracy, soit
-        <strong>96,7 %</strong> de la performance du marché (53,63 %), avec une excellente calibration (ECE 1,7 %). La
-        simulation de paris donne un <strong>ROI de −5,79 %</strong>, statistiquement indiscernable de la marge du
-        bookmaker (~5,5 %). Les courbes d'apprentissage plafonnent : on atteint l'erreur de Bayes accessible avec ces
-        variables. Conclusion : les données endogènes permettent d'<em>égaler</em> le marché mais pas de le battre —
-        l'alpha réside dans l'information exogène (compositions, blessures, xG) absente de l'historique. Un ROI négatif
-        aligné sur la marge n'est pas un échec : c'est la preuve empirique attendue d'un marché efficient.
+        <strong>Le résultat.</strong> Le modèle XGBoost sans les cotes atteint 51,9&nbsp;% d'accuracy, soit
+        <strong>96,7&nbsp;%</strong> de la performance du marché (53,63&nbsp;%), avec une calibration fine (ECE 1,7&nbsp;%). La
+        simulation de paris donne un <strong>ROI de −5,79&nbsp;%</strong>, proche de la marge du bookmaker (~5,5&nbsp;%), et
+        les courbes d'apprentissage plafonnent avec ces variables. L'historique public suffit à retrouver l'essentiel de
+        l'information contenue dans les cotes, pas à en tirer un avantage : un résultat cohérent avec l'hypothèse
+        d'efficience des marchés. L'écart restant tient à ce que l'historique ne contient pas : compositions, blessures, xG.
       </div>
 
       <details>
@@ -370,14 +572,14 @@
     <!-- ============ PROJET 2 : CLERMONT FOOT ============ -->
     <div class="card">
       <div class="project-header">
-        <h3>🎯 Profilage de joueurs par style de jeu — Clermont Foot 63</h3>
+        <h3>Profilage de joueurs par style de jeu — Clermont Foot 63</h3>
         <div class="tags">
           <span class="tag">Clustering</span>
           <span class="tag">Data App</span>
           <span class="tag">Recrutement</span>
         </div>
       </div>
-      <p class="flag-tag">Projet 4A · binôme · partenariat Clermont Foot 63 · données StatsBomb</p>
+      <p class="flag-tag">Projet 4A · oct. 2024 – fév. 2025 · binôme · partenariat Clermont Foot 63 · données StatsBomb</p>
       <p>
         Traduire des statistiques brutes StatsBomb (Ligue 1, 2023-24) en <strong>styles de jeu interprétables</strong>
         pour les recruteurs, via un pipeline JSON → SQLite → clustering non supervisé → dashboard Streamlit.
@@ -385,15 +587,15 @@
 
       <div class="metrics">
         <div class="metric"><div class="val">211 → 136</div><div class="lbl">variables StatsBomb retenues</div></div>
-        <div class="metric"><div class="val">68 → 50</div><div class="lbl">attaquants après filtrage</div></div>
-        <div class="metric"><div class="val">3</div><div class="lbl">styles de jeu distincts</div></div>
-        <div class="metric"><div class="val">R² &gt; 0.3</div><div class="lbl">seuil de variable discriminante</div></div>
+        <div class="metric"><div class="val">68 → 52</div><div class="lbl">attaquants retenus après filtrage</div></div>
+        <div class="metric"><div class="val">3 <span class="unit">profils</span></div><div class="lbl">de jeu distincts</div></div>
+        <div class="metric"><div class="val">R²&nbsp;&gt;&nbsp;0,3</div><div class="lbl">seuil de variable discriminante</div></div>
       </div>
 
       <div class="callout">
-        <strong>Classification en deux temps.</strong> Un premier <strong>K-Means</strong> (k=6, choisi à la méthode
-        du coude) segmente les joueurs par temps de jeu pour écarter ceux dont l'échantillon est statistiquement non
-        représentatif (68 → 52 attaquants). Une <strong>Classification Hiérarchique Ascendante</strong> (linkage de Ward,
+        <strong>Un profilage en deux temps.</strong> Un premier <strong>K-Means</strong> (k&nbsp;=&nbsp;6, choisi par la
+        méthode du coude) regroupe les joueurs selon leur temps de jeu, pour écarter ceux dont le volume est trop faible
+        pour être représentatif (68 → 52 attaquants). Une <strong>Classification Ascendante Hiérarchique</strong> (CAH, lien de Ward,
         coupure à distance 25) regroupe ensuite les 52 restants par style de jeu sans présupposer leur nombre — le
         dendrogramme le révèle. Pour chaque cluster, le R² de chaque variable face à l'appartenance au groupe est
         calculé, puis un seuil propre à chaque cluster est fixé au « gap » observé sur l'histogramme (0,14 à 0,35 selon
@@ -421,72 +623,119 @@
         <span class="pill">Plotly</span>
       </div>
 
-      <p class="note">Repo privé (données StatsBomb sous licence) — code non publié, approche détaillée ici.</p>
+      <p class="note">Dépôt privé (données StatsBomb sous licence) — code non publié, approche détaillée ici.</p>
     </div>
+  </section>
 
-    <!-- ============ PROJET 3 : MALMÖ ============ -->
+  <section id="en-cours">
+    <h2>En cours</h2>
+    <p class="section-sub">Des démarches en cours, présentées comme telles : un protocole et des outils, pas encore de résultat.</p>
+
+    <!-- ============ DxD ============ -->
     <div class="card">
       <div class="project-header">
-        <h3>🧠 Actimétrie & maladie de Parkinson — prédiction des scores MDS-UPDRS</h3>
+        <h3>DxD — value sur le marché des double-doubles en NBA</h3>
         <div class="tags">
-          <span class="tag">Recherche</span>
-          <span class="tag">Signal / Santé</span>
-          <span class="tag">Publication</span>
+          <span class="status live">En cours</span>
+          <span class="tag">Basket</span>
+          <span class="tag">Probabilités</span>
         </div>
       </div>
-      <p class="flag-tag">Stage de recherche · Université de Malmö (Suède) · mars – juil. 2025</p>
-      <p>
-        <strong>Peut-on estimer l'état clinique d'un patient parkinsonien à partir d'un capteur porté au poignet ?</strong>
-        Prédire les scores cliniques MDS-UPDRS (habituellement évalués en consultation) à partir de l'activité mesurée
-        en continu à domicile, sous un protocole de validation qui ne triche pas sur la généralisation patient.
+      <p class="flag-tag">Projet personnel · NBA, avec la WNBA comme terrain de test</p>
+      <p class="lede">
+        Estimer la probabilité qu'un joueur réalise un <strong>double-double</strong> — au moins 10 unités dans deux
+        catégories statistiques sur un même match — et la comparer aux cotes du marché. La WNBA sert de terrain de test.
       </p>
 
-      <div class="metrics">
-        <div class="metric"><div class="val">27</div><div class="lbl">patients, capteur 25 Hz</div></div>
-        <div class="metric"><div class="val">100+</div><div class="lbl">descripteurs + embeddings 64-d</div></div>
-        <div class="metric"><div class="val">7 × 5</div><div class="lbl">modèles × cibles testés (LOPO)</div></div>
-        <div class="metric"><div class="val">r = 0.89</div><div class="lbl">meilleur score composite</div></div>
+      <div class="flow" role="img" aria-label="Chaîne causale du modèle : disponibilité, minutes, possessions, taux de production, statistiques, probabilité de double-double, comparaison aux cotes du marché">
+        <span>Disponibilité</span><i aria-hidden="true">→</i>
+        <span>Minutes</span><i aria-hidden="true">→</i>
+        <span>Possessions</span><i aria-hidden="true">→</i>
+        <span>Taux de production</span><i aria-hidden="true">→</i>
+        <span>Statistiques</span><i aria-hidden="true">→</i>
+        <span>P(double-double)</span><i aria-hidden="true">→</i>
+        <span class="end">Comparaison aux cotes du marché</span>
       </div>
+      <p class="arch-caption">Chaîne causale du modèle : chaque étape conditionne la suivante.</p>
 
       <div class="callout">
-        <strong>Deux niveaux de représentation du signal.</strong> Plus de 100 descripteurs interprétables (activité,
-        sommeil, rythmes circadiens — packages R <code>GGIR</code> et <code>nParACT</code>) sont combinés à des
-        <strong>embeddings auto-supervisés SimCLR</strong> (64 dimensions), un encodeur entraîné par patient sur ses
-        propres fenêtres de signal pour capturer des motifs temporels invisibles aux variables classiques. Sept modèles
-        (Ridge, Lasso, ElasticNet, BayesianRidge, DecisionTree, KNN, Dummy) sont croisés avec cinq cibles (UPDRS 1, 2, 3
-        et leurs combinaisons), chacun avec sa propre sélection de variables par seuil SHAP optimisé — puis évalués
-        en <strong>Leave-One-Patient-Out</strong> strict : chaque patient testé n'a jamais été vu à l'entraînement.
+        <strong>Un protocole pré-enregistré.</strong> Avant le premier pari, tout est figé : le segment de joueurs, la règle
+        de cote minimale, la mise fixe et le moment de la décision, prise à 200 paris. Une application Streamlit accompagne
+        le suivi : repérage des joueurs, liste du soir, bilan.
       </div>
 
+      <figure class="shot">
+        <a href="assets/dxd_ce_soir.png" target="_blank" rel="noopener" title="Ouvrir la capture en taille réelle">
+          <img src="assets/dxd_ce_soir.png" width="1400" height="694" loading="lazy"
+            alt="Application DxD, vue « Ce soir » : joueurs du soir classés par probabilité estimée de double-double, avec la fiche détaillée d'un joueur">
+        </a>
+        <figcaption>Vue « Ce soir (algo) » de l'application : les joueurs du soir classés par probabilité estimée de
+          double-double, et la fiche détaillée d'un joueur. Cliquer pour agrandir.</figcaption>
+      </figure>
+
       <details>
-        <summary>Résultats par cible & publication</summary>
+        <summary>Côté ingénierie</summary>
         <div class="inner">
-          <p>Meilleurs résultats retenus : <strong>BayesianRidge</strong> sur Tot1 (symptômes non moteurs) —
-            RMSE 3,07, r = 0,752 ; <strong>Lasso</strong> sur le score composite Tot2+Tot3 (autonomie + moteur) —
-            RMSE 6,61, r = 0,888. Les modèles linéaires régularisés (Ridge, Lasso, BayesianRidge) surclassent
-            systématiquement KNN et Decision Tree sur ce volume de données restreint.</p>
-          <p>Ces travaux ont donné lieu à une publication évaluée par les pairs, dont je suis co-auteur.</p>
+          <p>Une seule base de code pour la NBA et la WNBA, la ligue se choisissant par configuration ; une base DuckDB ;
+            13 contrôles automatiques exécutables sans réseau ; une sauvegarde quotidienne vérifiée de la base.</p>
         </div>
       </details>
 
       <div class="tech-pills">
         <span class="pill">Python</span>
-        <span class="pill">PyTorch</span>
-        <span class="pill">R (GGIR)</span>
-        <span class="pill">SHAP</span>
-        <span class="pill">scikit-learn</span>
+        <span class="pill">DuckDB</span>
+        <span class="pill">Streamlit</span>
       </div>
 
-      <div class="links" style="margin-top:16px;">
-        <a class="btn" href="https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1876052/full" target="_blank" rel="noopener">Lire l'article (Frontiers in Digital Health, 2026) →</a>
+      <p class="note">Dépôt privé, publication prévue une fois finalisé.</p>
+    </div>
+
+    <div class="mini-grid">
+      <!-- ============ SPORT FORECAST HUB ============ -->
+      <div class="mini-card">
+        <div class="project-header" style="margin-bottom:8px;">
+          <h4 style="margin:0;">Sport Forecast Hub</h4>
+          <span class="status live">En cours</span>
+        </div>
+        <p>
+          Un centre personnel de détection de value multi-sports : historique de <strong>cotes publiques d'opérateurs
+          français</strong>, probabilités issues de modèles (double-double NBA, buteur NHL, vainqueur d'un match de tennis),
+          suivi par CLV, calibration et ROI.
+        </p>
+        <p>
+          Un pré-enregistrement est figé par marché avant le premier signal ; la CLV (<em>closing line value</em>) sert de
+          métrique principale. Collecte à faible fréquence, sur pages publiques uniquement ; aucun pari n'est automatisé.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">Python</span><span class="pill">Streamlit</span>
+        </div>
+        <p class="mini-note">Projet personnel · dépôt privé, publication prévue une fois finalisé</p>
       </div>
 
-      <p class="note">Données patients protégées (santé) — non partageables ; la publication évaluée par les pairs est en accès libre.</p>
+      <!-- ============ CYCLISME ============ -->
+      <div class="mini-card">
+        <div class="project-header" style="margin-bottom:8px;">
+          <h4 style="margin:0;">Cyclisme — ratings dynamiques des coureurs</h4>
+          <span class="status idea">En réflexion</span>
+        </div>
+        <p>
+          Estimer, pour chaque coureur, un niveau propre à chaque type de terrain (plat, vallonné, montagne,
+          contre-la-montre), puis en déduire des <strong>probabilités de victoire et de top 10</strong>.
+        </p>
+        <p>
+          Démarche envisagée : un Elo multi-coureurs, puis un modèle de Plackett-Luce dynamique, mis à jour course après
+          course ; réglage sur 2025, puis un test unique, figé, sur la saison 2026. Pas encore lancé.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">Python</span><span class="pill">DuckDB</span>
+        </div>
+        <p class="mini-note">Projet personnel · dépôt privé, publication prévue une fois finalisé</p>
+      </div>
     </div>
   </section>
 
   <section id="autres">
-    <h2>Autres projets du cursus</h2>
+    <h2>Projets de cours</h2>
     <p class="section-sub">
       Des travaux de groupe menés pendant ma formation, sur des domaines volontairement variés — vision par ordinateur,
       apprentissage par renforcement, BI, bases de données.
@@ -501,11 +750,8 @@
           (caméras Zivid, pneus stockés) par <strong>LoRA</strong>, pour corriger un fort <em>domain gap</em>.
           Cibler les couches denses plutôt que les seules couches d'attention a été déterminant pour retrouver
           l'échelle métrique : le RMSE passe de <strong>1,81 m à 7 cm</strong> et la précision géométrique
-          (δ &lt; 1.25) de <strong>17 % à 99,4 %</strong>, avec un F1 de 0,96 sur la détection d'obstacles proches.
+          (δ &lt; 1,25) de <strong>17 % à 99,4 %</strong>, avec un F1 de 0,96 sur la détection d'obstacles proches.
         </p>
-        <div class="tech-pills">
-          <span class="pill">PyTorch</span><span class="pill">Hugging Face</span><span class="pill">PEFT / LoRA</span>
-        </div>
         <p class="mini-note">Projet de groupe · vision par ordinateur</p>
       </div>
 
@@ -517,16 +763,13 @@
           de rigidité de dérive du pneumatique. Volet complémentaire d'<strong>optimisation bayésienne</strong> pour le
           calibrage de ce modèle.
         </p>
-        <div class="tech-pills">
-          <span class="pill">TensorFlow</span><span class="pill">DDPG</span><span class="pill">Optim. bayésienne</span>
-        </div>
-        <p class="mini-note">Projet de groupe · RL &amp; optimisation</p>
+        <p class="mini-note">Projet de groupe · apprentissage par renforcement et optimisation</p>
       </div>
 
       <div class="mini-card">
         <h4>Sécurité en France vs Europe — tableau de bord Power BI</h4>
         <a href="https://github.com/MathisPicasse/Power-BI-Securite-en-France-et-Europe" target="_blank" rel="noopener">
-          <img class="mini-thumb" src="assets/powerbi_preview.jpeg" alt="Aperçu du tableau de bord Power BI sur la sécurité en France">
+          <img class="mini-thumb" src="assets/powerbi_preview.jpeg" loading="lazy" width="1114" height="651" alt="Aperçu du tableau de bord Power BI sur la sécurité en France">
         </a>
         <p>
           Sujet libre, en binôme : l'essentiel du travail a porté sur la <strong>recherche de sources fiables</strong>
@@ -538,19 +781,19 @@
           <span class="pill">Power BI</span><span class="pill">Power Query</span><span class="pill">DAX</span>
         </div>
         <p class="mini-note">
-          Binôme · <a href="https://github.com/MathisPicasse/Power-BI-Securite-en-France-et-Europe" target="_blank" rel="noopener">repo public &amp; captures des 7 pages →</a>
+          Binôme · <a href="https://github.com/MathisPicasse/Power-BI-Securite-en-France-et-Europe" target="_blank" rel="noopener">dépôt public et captures des 7 pages →</a>
         </p>
       </div>
 
       <div class="mini-card">
-        <h4>Reconnaissance de signes — vision par ordinateur</h4>
+        <h4>Alphabet de la langue des signes française (LSF) — vision par ordinateur</h4>
         <p>
-          Projet de détection et de reconnaissance de signes à partir d'images, autour d'un pipeline classique de
-          vision par ordinateur : préparation du jeu d'images, entraînement d'un modèle de classification et
-          évaluation des performances.
+          Reconnaissance des lettres de l'alphabet de la LSF à partir d'images : préparation du jeu d'images, entraînement
+          d'un <strong>réseau de neurones convolutif (CNN)</strong> et évaluation. Le modèle atteint
+          <strong>92&nbsp;% d'accuracy</strong>.
         </p>
         <div class="tech-pills">
-          <span class="pill">Python</span><span class="pill">Computer Vision</span>
+          <span class="pill">Python</span><span class="pill">CNN</span>
         </div>
         <p class="mini-note">Binôme · vision par ordinateur</p>
       </div>
@@ -571,20 +814,84 @@
     </div>
   </section>
 
+  <section id="competences">
+    <h2>Compétences et formation</h2>
+    <p class="section-sub">Les outils et méthodes mobilisés dans les projets ci-dessus.</p>
+
+    <div class="card">
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <h4>Langages et ingénierie</h4>
+          <p>Python (pandas, scikit-learn, XGBoost, SHAP, rapidfuzz), SQL, Git/GitHub, API REST, pipelines ETL, Docker,
+            PostgreSQL, SQLite, DuckDB, pytest, CI/CD (GitHub Actions), R (GGIR).</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Machine learning</h4>
+          <p>Apprentissage supervisé et non supervisé, séries temporelles, feature engineering, Time Series Split,
+            validation anti-fuite (LOPO), clustering (K-Means, CAH), calibration.</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Données sportives</h4>
+          <p>Flux event et tracking (Opta, Genius Sports, StatsBomb ; aussi Hawk-Eye, Champion Data), KPI de performance,
+            métriques de recrutement, classement Elo.</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Visualisation et produit</h4>
+          <p>Streamlit, Plotly, Matplotlib, Power BI (DAX, Power Query).</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Notions (projets de cours)</h4>
+          <p>PyTorch, TensorFlow, Hugging Face, PEFT/LoRA.</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Langues</h4>
+          <p>Français (langue maternelle), anglais B2+ (TOEIC 870/990).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exp-item">
+        <div class="exp-head">
+          <h3>Diplôme d'ingénieur — Polytech Clermont</h3>
+          <span class="dates">2023 – 2026</span>
+        </div>
+        <div class="org">Mathématiques appliquées · parcours Ingénierie Mathématique et Data Science · spécialisation IA &amp; Big Data</div>
+        <p class="exp-text">Vice-président de l'association IMDS.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-head">
+          <h3>Classe préparatoire MP</h3>
+          <span class="dates">2021 – 2023</span>
+        </div>
+        <div class="org">Lycée Marceau, Chartres</div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
-    <h2>Contact</h2>
-    <p class="section-sub">Recherche un CDI dès octobre 2026 — Sport, Betting, Tech.</p>
+    <h2>À propos et contact</h2>
+    <p class="about">
+      Le sport est d'abord une passion : je suis de près le football, le basket et le tennis, et je ne manque pas les
+      grandes compétitions internationales. Je passe beaucoup de temps à décortiquer les confrontations à venir pour
+      repérer les indicateurs d'avant-match qui pèsent vraiment, et je collectionne les cartes de sport.
+    </p>
+    <p class="contact-line">
+      <strong>Disponible immédiatement</strong> pour un CDI — Sport, Betting, Tech. Basé à Paris, mobile en France et
+      en Europe.
+    </p>
     <div class="links">
       <a class="btn primary" href="mailto:alban.haton@gmail.com">alban.haton@gmail.com</a>
       <a class="btn" href="https://www.linkedin.com/in/alban-haton" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="https://github.com/AlbanHtn" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="assets/CV_Alban_Haton.pdf" download="CV_Alban_Haton.pdf">Télécharger le CV</a>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Alban Haton — Construit avec HTML/CSS, hébergé sur GitHub Pages.</div>
+  <div class="wrap">© 2026 Alban Haton — HTML et CSS, hébergé sur GitHub Pages.</div>
 </footer>
 
 </body>
