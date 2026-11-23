@@ -196,6 +196,23 @@
     .arch-arrow { justify-self: center; transform: rotate(90deg); line-height: 1; }
   }
 
+  /* Projets en cours */
+  .status { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+    white-space: nowrap; border: 1px solid; }
+  .status.live { color: #1a7f4b; background: #e6f6ec; border-color: #b6e3c6; }
+  .status.idea { color: #8a5a00; background: #fdf3dc; border-color: #f0d79a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .status.live { color: #5fd38d; background: #0f2a1c; border-color: #1d4d33; }
+    :root:not([data-theme="light"]) .status.idea { color: #f0c062; background: #2c2210; border-color: #57431c; }
+  }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 18px 0 6px; }
+  .flow span { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px;
+    font-size: 0.8rem; color: var(--text); }
+  .flow span.end { border-color: var(--accent); background: var(--accent-soft); }
+  .flow i { font-style: normal; color: var(--accent); font-weight: 700; }
+  .shot { margin: 18px 0 6px; }
+  .shot img { background: #131311; }
+
   /* Secondary projects grid */
   .mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: start; }
   .mini-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; }
@@ -669,8 +686,115 @@
     </div>
   </section>
 
+  <section id="en-cours">
+    <h2>En cours</h2>
+    <p class="section-sub">Des démarches en cours, présentées comme telles : un protocole et des outils, pas encore de résultat.</p>
+
+    <!-- ============ DxD ============ -->
+    <div class="card">
+      <div class="project-header">
+        <h3>DxD — value sur le marché des double-doubles en NBA</h3>
+        <div class="tags">
+          <span class="status live">En cours</span>
+          <span class="tag">Basket</span>
+          <span class="tag">Probabilités</span>
+        </div>
+      </div>
+      <p class="flag-tag">Projet personnel · NBA, avec la WNBA comme terrain de test</p>
+      <p class="lede">
+        Estimer la probabilité qu'un joueur réalise un <strong>double-double</strong> — au moins 10 unités dans deux
+        catégories statistiques sur un même match — et la comparer aux cotes du marché. La WNBA sert de terrain de test.
+      </p>
+
+      <div class="flow" role="img" aria-label="Chaîne causale du modèle : disponibilité, minutes, possessions, taux de production, statistiques, probabilité de double-double, comparaison aux cotes du marché">
+        <span>Disponibilité</span><i aria-hidden="true">→</i>
+        <span>Minutes</span><i aria-hidden="true">→</i>
+        <span>Possessions</span><i aria-hidden="true">→</i>
+        <span>Taux de production</span><i aria-hidden="true">→</i>
+        <span>Statistiques</span><i aria-hidden="true">→</i>
+        <span>P(double-double)</span><i aria-hidden="true">→</i>
+        <span class="end">Comparaison aux cotes du marché</span>
+      </div>
+      <p class="arch-caption">Chaîne causale du modèle : chaque étape conditionne la suivante.</p>
+
+      <div class="callout">
+        <strong>Un protocole pré-enregistré.</strong> Avant le premier pari, tout est figé : le segment de joueurs, la règle
+        de cote minimale, la mise fixe et le moment de la décision, prise à 200 paris. Une application Streamlit accompagne
+        le suivi : repérage des joueurs, liste du soir, bilan.
+      </div>
+
+      <figure class="shot">
+        <a href="assets/dxd_ce_soir.png" target="_blank" rel="noopener" title="Ouvrir la capture en taille réelle">
+          <img src="assets/dxd_ce_soir.png" width="1400" height="694" loading="lazy"
+            alt="Application DxD, vue « Ce soir » : joueurs du soir classés par probabilité estimée de double-double, avec la fiche détaillée d'un joueur">
+        </a>
+        <figcaption>Vue « Ce soir (algo) » de l'application : les joueurs du soir classés par probabilité estimée de
+          double-double, et la fiche détaillée d'un joueur. Cliquer pour agrandir.</figcaption>
+      </figure>
+
+      <details>
+        <summary>Côté ingénierie</summary>
+        <div class="inner">
+          <p>Une seule base de code pour la NBA et la WNBA, la ligue se choisissant par configuration ; une base DuckDB ;
+            13 contrôles automatiques exécutables sans réseau ; une sauvegarde quotidienne vérifiée de la base.</p>
+        </div>
+      </details>
+
+      <div class="tech-pills">
+        <span class="pill">Python</span>
+        <span class="pill">DuckDB</span>
+        <span class="pill">Streamlit</span>
+      </div>
+
+      <p class="note">Dépôt privé, publication prévue une fois finalisé.</p>
+    </div>
+
+    <div class="mini-grid">
+      <!-- ============ SPORT FORECAST HUB ============ -->
+      <div class="mini-card">
+        <div class="project-header" style="margin-bottom:8px;">
+          <h4 style="margin:0;">Sport Forecast Hub</h4>
+          <span class="status live">En cours</span>
+        </div>
+        <p>
+          Un centre personnel de détection de value multi-sports : historique de <strong>cotes publiques d'opérateurs
+          français</strong>, probabilités issues de modèles (double-double NBA, buteur NHL, vainqueur d'un match de tennis),
+          suivi par CLV, calibration et ROI.
+        </p>
+        <p>
+          Un pré-enregistrement est figé par marché avant le premier signal ; la CLV (<em>closing line value</em>) sert de
+          métrique principale. Collecte à faible fréquence, sur pages publiques uniquement ; aucun pari n'est automatisé.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">Python</span><span class="pill">Streamlit</span>
+        </div>
+        <p class="mini-note">Projet personnel · dépôt privé, publication prévue une fois finalisé</p>
+      </div>
+
+      <!-- ============ CYCLISME ============ -->
+      <div class="mini-card">
+        <div class="project-header" style="margin-bottom:8px;">
+          <h4 style="margin:0;">Cyclisme — ratings dynamiques des coureurs</h4>
+          <span class="status idea">En réflexion</span>
+        </div>
+        <p>
+          Estimer, pour chaque coureur, un niveau propre à chaque type de terrain (plat, vallonné, montagne,
+          contre-la-montre), puis en déduire des <strong>probabilités de victoire et de top 10</strong>.
+        </p>
+        <p>
+          Démarche envisagée : un Elo multi-coureurs, puis un modèle de Plackett-Luce dynamique, mis à jour course après
+          course ; réglage sur 2025, puis un test unique, figé, sur la saison 2026. Pas encore lancé.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">Python</span><span class="pill">DuckDB</span>
+        </div>
+        <p class="mini-note">Projet personnel · dépôt privé, publication prévue une fois finalisé</p>
+      </div>
+    </div>
+  </section>
+
   <section id="autres">
-    <h2>Autres projets du cursus</h2>
+    <h2>Projets de cours</h2>
     <p class="section-sub">
       Des travaux de groupe menés pendant ma formation, sur des domaines volontairement variés — vision par ordinateur,
       apprentissage par renforcement, BI, bases de données.
@@ -685,11 +809,8 @@
           (caméras Zivid, pneus stockés) par <strong>LoRA</strong>, pour corriger un fort <em>domain gap</em>.
           Cibler les couches denses plutôt que les seules couches d'attention a été déterminant pour retrouver
           l'échelle métrique : le RMSE passe de <strong>1,81 m à 7 cm</strong> et la précision géométrique
-          (δ &lt; 1.25) de <strong>17 % à 99,4 %</strong>, avec un F1 de 0,96 sur la détection d'obstacles proches.
+          (δ &lt; 1,25) de <strong>17 % à 99,4 %</strong>, avec un F1 de 0,96 sur la détection d'obstacles proches.
         </p>
-        <div class="tech-pills">
-          <span class="pill">PyTorch</span><span class="pill">Hugging Face</span><span class="pill">PEFT / LoRA</span>
-        </div>
         <p class="mini-note">Projet de groupe · vision par ordinateur</p>
       </div>
 
@@ -701,16 +822,13 @@
           de rigidité de dérive du pneumatique. Volet complémentaire d'<strong>optimisation bayésienne</strong> pour le
           calibrage de ce modèle.
         </p>
-        <div class="tech-pills">
-          <span class="pill">TensorFlow</span><span class="pill">DDPG</span><span class="pill">Optim. bayésienne</span>
-        </div>
-        <p class="mini-note">Projet de groupe · RL &amp; optimisation</p>
+        <p class="mini-note">Projet de groupe · apprentissage par renforcement et optimisation</p>
       </div>
 
       <div class="mini-card">
         <h4>Sécurité en France vs Europe — tableau de bord Power BI</h4>
         <a href="https://github.com/MathisPicasse/Power-BI-Securite-en-France-et-Europe" target="_blank" rel="noopener">
-          <img class="mini-thumb" src="assets/powerbi_preview.jpeg" alt="Aperçu du tableau de bord Power BI sur la sécurité en France">
+          <img class="mini-thumb" src="assets/powerbi_preview.jpeg" loading="lazy" width="1114" height="651" alt="Aperçu du tableau de bord Power BI sur la sécurité en France">
         </a>
         <p>
           Sujet libre, en binôme : l'essentiel du travail a porté sur la <strong>recherche de sources fiables</strong>
@@ -722,19 +840,19 @@
           <span class="pill">Power BI</span><span class="pill">Power Query</span><span class="pill">DAX</span>
         </div>
         <p class="mini-note">
-          Binôme · <a href="https://github.com/MathisPicasse/Power-BI-Securite-en-France-et-Europe" target="_blank" rel="noopener">repo public &amp; captures des 7 pages →</a>
+          Binôme · <a href="https://github.com/MathisPicasse/Power-BI-Securite-en-France-et-Europe" target="_blank" rel="noopener">dépôt public et captures des 7 pages →</a>
         </p>
       </div>
 
       <div class="mini-card">
-        <h4>Reconnaissance de signes — vision par ordinateur</h4>
+        <h4>Alphabet de la langue des signes française (LSF) — vision par ordinateur</h4>
         <p>
-          Projet de détection et de reconnaissance de signes à partir d'images, autour d'un pipeline classique de
-          vision par ordinateur : préparation du jeu d'images, entraînement d'un modèle de classification et
-          évaluation des performances.
+          Reconnaissance des lettres de l'alphabet de la LSF à partir d'images : préparation du jeu d'images, entraînement
+          d'un <strong>réseau de neurones convolutif (CNN)</strong> et évaluation. Le modèle atteint
+          <strong>92&nbsp;% d'accuracy</strong>.
         </p>
         <div class="tech-pills">
-          <span class="pill">Python</span><span class="pill">Computer Vision</span>
+          <span class="pill">Python</span><span class="pill">CNN</span>
         </div>
         <p class="mini-note">Binôme · vision par ordinateur</p>
       </div>
