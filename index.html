@@ -38,14 +38,6 @@
       --border: #232833; --accent: #5b8def; --accent-soft: #16213a; --card: #131720; --code-bg: #191e28;
     }
   }
-  :root[data-theme="dark"] {
-    --bg: #0d1117; --bg-alt: #11151c; --text: #e6e9ef; --text-dim: #9aa4b2;
-    --border: #232833; --accent: #5b8def; --accent-soft: #16213a; --card: #131720; --code-bg: #191e28;
-  }
-  :root[data-theme="light"] {
-    --bg: #ffffff; --bg-alt: #f6f7f9; --text: #14161a; --text-dim: #55606e;
-    --border: #e3e6ea; --accent: #2563eb; --accent-soft: #eaf0fe; --card: #ffffff; --code-bg: #f0f2f5;
-  }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
@@ -119,10 +111,6 @@
   .metric .val { font-size: 1.35rem; font-weight: 700; color: var(--accent); }
   .metric .lbl { font-size: 0.76rem; color: var(--text-dim); margin-top: 2px; }
 
-  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.88rem; }
-  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); }
-  th { color: var(--text-dim); font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.03em; }
-  td strong { color: var(--accent); }
 
   .callout {
     background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0;
@@ -143,6 +131,7 @@
   .exp-item .dates { color: var(--text-dim); font-size: 0.8rem; white-space: nowrap; }
   .exp-item ul { margin: 8px 0 0; padding-left: 20px; font-size: 0.92rem; color: var(--text); }
   .exp-item li { margin-bottom: 5px; }
+  .exp-item .exp-text { font-size: 0.9rem; margin: 8px 0 0; }
   .exp-item .note {
     font-size: 0.84rem; color: var(--text-dim); font-style: italic; margin-top: 8px;
   }
@@ -202,8 +191,8 @@
   .status.live { color: #1a7f4b; background: #e6f6ec; border-color: #b6e3c6; }
   .status.idea { color: #8a5a00; background: #fdf3dc; border-color: #f0d79a; }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .status.live { color: #5fd38d; background: #0f2a1c; border-color: #1d4d33; }
-    :root:not([data-theme="light"]) .status.idea { color: #f0c062; background: #2c2210; border-color: #57431c; }
+    .status.live { color: #5fd38d; background: #0f2a1c; border-color: #1d4d33; }
+    .status.idea { color: #f0c062; background: #2c2210; border-color: #57431c; }
   }
   .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 18px 0 6px; }
   .flow span { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px;
@@ -212,6 +201,12 @@
   .flow i { font-style: normal; color: var(--accent); font-weight: 700; }
   .shot { margin: 18px 0 6px; }
   .shot img { background: #131311; }
+
+  /* À propos et contact */
+  .about { font-size: 1rem; margin: 0 0 22px; }
+  .contact-line { color: var(--text-dim); max-width: 680px; margin: 0 0 22px; }
+  .contact-line strong { color: var(--text); }
+  .skill-cat p strong { color: var(--text); }
 
   /* Secondary projects grid */
   .mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: start; }
@@ -454,60 +449,6 @@
     </div>
   </section>
 
-  <section id="profil">
-    <h2>Profil</h2>
-    <p class="section-sub">Le parcours et les convictions derrière les projets ci-dessous.</p>
-
-    <div class="card">
-      <div class="subhead">Parcours</div>
-      <p>
-        Je termine mon cursus d'ingénieur à <strong>Polytech Clermont</strong> (spécialité Informatique, Modélisation
-        et Data Science — orientation IA &amp; Big Data), diplômé en juillet 2026. Mon parcours s'est construit autour
-        d'une idée simple : une donnée n'a de valeur que si l'on sait la rendre <em>utilisable</em> — par un décideur,
-        un journaliste, un recruteur sportif ou un clinicien. C'est ce qui m'a mené de la recherche appliquée en santé
-        (Université de Malmö, publication scientifique à la clé) au football professionnel.
-      </p>
-
-      <div class="subhead">Ce que j'ai appris à la LFP</div>
-      <p>
-        Mon poste d'<strong>Assistant Chef de Projet Football Data à la LFP Media</strong> (Ligue de Football
-        Professionnel) a confirmé sans ambiguïté mon envie d'être ingénieur data dans le sport. J'y ai bénéficié d'une
-        grande liberté de création et de proposition, sur des missions volontairement variées :
-      </p>
-      <ul>
-        <li><strong>Un projet data full-stack</strong> : conception d'une application Streamlit interne qui automatise
-          l'accès aux données, met en avant l'information réellement importante et fournit des visualisations propres
-          sur lesquelles la rédaction peut s'appuyer.</li>
-        <li><strong>De la R&amp;D sur des projets d'innovation</strong> : construction du modèle, tests, puis
-          présentation des résultats en interne.</li>
-        <li><strong>Les premiers audits qualité de fournisseurs de données</strong> (Event &amp; Tracking), pour
-          comparer objectivement une offre concurrente à ce qui est déjà en place.</li>
-        <li><strong>De l'éditorial</strong> : transformer des données parlantes en <em>facts</em> exploitables, et
-          produire des rapports d'analyse — données éditoriales directement associées à des clips vidéo montés par mes
-          soins — à destination des journalistes, pour des plateaux d'avant-match, des émissions, des interviews, de la
-          rédaction et du documentaire.</li>
-      </ul>
-      <p>
-        C'est cette double casquette qui m'intéresse : être assez rigoureux techniquement pour que le chiffre soit juste,
-        et assez proche du métier pour qu'il serve à quelque chose.
-      </p>
-
-      <div class="subhead">Le sport, avant d'être un sujet de données</div>
-      <p>
-        Le sport est d'abord une passion. Je suis assidûment le football, le basket et le tennis, et je ne rate pas les
-        grands rendez-vous — Coupes du monde, Jeux Olympiques, championnats internationaux, quel que soit le sport.
-        J'ai pratiqué en loisir le golf, le tennis de table, le basket, le badminton, le judo, le ski et la natation ;
-        aujourd'hui, c'est surtout le tennis et le football.
-      </p>
-      <p>
-        Cette passion nourrit directement ma pratique technique : je passe beaucoup de temps à décortiquer les
-        confrontations à venir pour identifier les <strong>indicateurs d'avant-match les plus déterminants</strong> sur
-        ce qui va réellement se produire — une démarche d'aide au pronostic qui est exactement la question posée par mon
-        projet phare sur l'efficience du marché des paris. Et, plus anecdotiquement, je collectionne les cartes de sport.
-      </p>
-    </div>
-  </section>
-
   <section id="projects">
     <h2>Projets sport</h2>
     <p class="section-sub">Deux études de cas menées pendant mon cursus — de la donnée brute au résultat, avec le raisonnement méthodologique à chaque étape.</p>
@@ -578,12 +519,12 @@
 
       <div class="fig-grid">
         <figure>
-          <img src="assets/football/calibration_curve.png" alt="Courbe de calibration du modèle XGBoost, ECE = 1,7%">
+          <img src="assets/football/calibration_curve.png" width="691" height="702" loading="lazy" alt="Courbe de calibration du modèle XGBoost, ECE = 1,7 %">
           <figcaption><strong>Calibration (ECE 1,7 %).</strong> Quand le modèle annonce 60 % de victoire, l'événement
             se produit ≈ 60 % du temps — condition nécessaire à un calcul d'espérance de gain fiable.</figcaption>
         </figure>
         <figure>
-          <img src="assets/football/shap_summary.png" alt="Graphique SHAP des variables du XGBoost">
+          <img src="assets/football/shap_summary.png" width="788" height="740" loading="lazy" alt="Graphique SHAP des variables du XGBoost">
           <figcaption><strong>Explicabilité SHAP.</strong> Le modèle suit une logique pseudo-bayésienne : l'écart Elo
             fixe la tendance lourde, les statistiques récentes ajustent à la marge.</figcaption>
         </figure>
@@ -873,20 +814,84 @@
     </div>
   </section>
 
+  <section id="competences">
+    <h2>Compétences et formation</h2>
+    <p class="section-sub">Les outils et méthodes mobilisés dans les projets ci-dessus.</p>
+
+    <div class="card">
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <h4>Langages et ingénierie</h4>
+          <p>Python (pandas, scikit-learn, XGBoost, SHAP, rapidfuzz), SQL, Git/GitHub, API REST, pipelines ETL, Docker,
+            PostgreSQL, SQLite, DuckDB, pytest, CI/CD (GitHub Actions), R (GGIR).</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Machine learning</h4>
+          <p>Apprentissage supervisé et non supervisé, séries temporelles, feature engineering, Time Series Split,
+            validation anti-fuite (LOPO), clustering (K-Means, CAH), calibration.</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Données sportives</h4>
+          <p>Flux event et tracking (Opta, Genius Sports, StatsBomb ; aussi Hawk-Eye, Champion Data), KPI de performance,
+            métriques de recrutement, classement Elo.</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Visualisation et produit</h4>
+          <p>Streamlit, Plotly, Matplotlib, Power BI (DAX, Power Query).</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Notions (projets de cours)</h4>
+          <p>PyTorch, TensorFlow, Hugging Face, PEFT/LoRA.</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Langues</h4>
+          <p>Français (langue maternelle), anglais B2+ (TOEIC 870/990).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exp-item">
+        <div class="exp-head">
+          <h3>Diplôme d'ingénieur — Polytech Clermont</h3>
+          <span class="dates">2023 – 2026</span>
+        </div>
+        <div class="org">Mathématiques appliquées · parcours Ingénierie Mathématique et Data Science · spécialisation IA &amp; Big Data</div>
+        <p class="exp-text">Vice-président de l'association IMDS.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-head">
+          <h3>Classe préparatoire MP</h3>
+          <span class="dates">2021 – 2023</span>
+        </div>
+        <div class="org">Lycée Marceau, Chartres</div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
-    <h2>Contact</h2>
-    <p class="section-sub">Recherche un CDI dès octobre 2026 — Sport, Betting, Tech.</p>
+    <h2>À propos et contact</h2>
+    <p class="about">
+      Le sport est d'abord une passion : je suis de près le football, le basket et le tennis, et je ne manque pas les
+      grandes compétitions internationales. Je passe beaucoup de temps à décortiquer les confrontations à venir pour
+      repérer les indicateurs d'avant-match qui pèsent vraiment, et je collectionne les cartes de sport.
+    </p>
+    <p class="contact-line">
+      <strong>Disponible immédiatement</strong> pour un CDI — Sport, Betting, Tech. Basé à Paris, mobile en France et
+      en Europe.
+    </p>
     <div class="links">
       <a class="btn primary" href="mailto:alban.haton@gmail.com">alban.haton@gmail.com</a>
       <a class="btn" href="https://www.linkedin.com/in/alban-haton" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="https://github.com/AlbanHtn" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="assets/CV_Alban_Haton.pdf" download="CV_Alban_Haton.pdf">Télécharger le CV</a>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Alban Haton — Construit avec HTML/CSS, hébergé sur GitHub Pages.</div>
+  <div class="wrap">© 2026 Alban Haton — HTML et CSS, hébergé sur GitHub Pages.</div>
 </footer>
 
 </body>
